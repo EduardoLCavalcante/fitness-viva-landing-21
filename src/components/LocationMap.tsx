@@ -30,9 +30,9 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // Initialize map
     const map = L.map(mapRef.current).setView(position, zoom);
     
-    // Add tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    // Add dark map tiles
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
     
     // Create custom icon for marker
@@ -58,8 +58,8 @@ const LocationMap: React.FC<LocationMapProps> = ({
     marker.bindPopup(`
       <div class="p-2 text-center">
         <strong class="text-maisvida-green block text-lg">+ VIDA</strong>
-        <span class="block text-sm text-gray-600">Studio de Musculação</span>
-        <p class="text-sm mt-2">${popupText}</p>
+        <span class="block text-sm text-gray-400">Studio de Musculação</span>
+        <p class="text-sm mt-2 text-white">${popupText}</p>
         <a href="https://maps.google.com/?q=${position[0]},${position[1]}" target="_blank" class="mt-2 inline-block px-3 py-1 bg-maisvida-green text-white text-xs rounded-full">Como chegar</a>
       </div>
     `).openPopup();
@@ -76,6 +76,17 @@ const LocationMap: React.FC<LocationMapProps> = ({
         background: transparent;
         border: none;
       }
+      .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+        background-color: #111;
+        color: white;
+        border: 1px solid rgba(79, 209, 79, 0.2);
+      }
+      .leaflet-popup-content {
+        color: white;
+      }
+      .leaflet-container {
+        background: #111;
+      }
     `;
     document.head.appendChild(customStyles);
     
@@ -87,7 +98,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
   }, [position, zoom, popupText]);
   
   return (
-    <div className="overflow-hidden rounded-2xl shadow-2xl h-[400px] md:h-[500px] w-full bg-gradient-to-br from-black via-maisvida-dark to-black border border-white/10">
+    <div className="overflow-hidden rounded-2xl shadow-2xl h-[400px] md:h-[500px] w-full bg-gradient-to-br from-black via-maisvida-dark to-black border border-maisvida-green/10">
       <div ref={mapRef} className="h-full w-full z-10" />
     </div>
   );

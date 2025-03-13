@@ -26,17 +26,17 @@ const Hero = () => {
           {/* Left section with text */}
           <div className="w-full lg:w-1/2 text-center lg:text-left animate-on-scroll">
             <div className="mb-8 flex justify-center lg:justify-start">
-              <div className="flex items-center gap-3 py-2 px-4 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+              <div className="flex items-center gap-3 py-2 px-4 bg-maisvida-green/10 backdrop-blur-sm rounded-full border border-maisvida-green/20">
                 <span className="w-2 h-2 bg-maisvida-green rounded-full animate-pulse"></span>
-                <span className="text-white/80 text-sm">Academia Premium</span>
+                <span className="text-white/90 text-sm font-medium tracking-wide">Academia Premium</span>
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-tight">
               <span className="text-white">Transforme seu</span>
               <br />
               <div className="relative inline-flex">
-                <span className="text-maisvida-green">corpo</span>
+                <span className="bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">corpo</span>
                 <span className="ml-4 relative">
                   <img 
                     src="/lovable-uploads/297c7f25-31fc-4cbb-93a9-ca3a77819f69.png" 
@@ -47,47 +47,47 @@ const Hero = () => {
               </div>
             </h1>
             
-            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-lg">
+            <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-lg font-light">
               Ambiente exclusivo com equipamentos de última geração e profissionais experientes para cuidar da sua saúde e bem-estar.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <Button className="bg-maisvida-green hover:bg-maisvida-green/90 text-white font-bold px-8 py-6 rounded-lg text-lg shadow-lg hover:shadow-maisvida-green/20 transition-all duration-300">
+              <Button className="bg-gradient-to-r from-maisvida-green to-emerald-500 hover:from-emerald-500 hover:to-maisvida-green text-white font-bold px-8 py-6 rounded-lg text-lg shadow-lg shadow-maisvida-green/20 transition-all duration-300">
                 <HeartPulse className="mr-2" /> Começar Agora
               </Button>
-              <Button variant="outline" className="border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 px-8 py-6 rounded-lg text-lg transition-all duration-300">
+              <Button variant="outline" className="border-maisvida-green/20 bg-black/40 backdrop-blur-sm text-white hover:bg-maisvida-green/10 px-8 py-6 rounded-lg text-lg transition-all duration-300">
                 <Trophy className="mr-2" /> Ver Planos
               </Button>
             </div>
             
             <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-8">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm border border-white/10">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-maisvida-green/10 backdrop-blur-sm border border-maisvida-green/20">
                   <Dumbbell className="text-maisvida-green h-6 w-6" />
                 </div>
                 <div className="text-left">
                   <p className="text-white font-bold">100+</p>
-                  <p className="text-white/60 text-sm">Equipamentos</p>
+                  <p className="text-white/70 text-sm">Equipamentos</p>
                 </div>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm border border-white/10">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-maisvida-red/10 backdrop-blur-sm border border-maisvida-red/20">
                   <HeartPulse className="text-maisvida-red h-6 w-6" />
                 </div>
                 <div className="text-left">
                   <p className="text-white font-bold">15+</p>
-                  <p className="text-white/60 text-sm">Profissionais</p>
+                  <p className="text-white/70 text-sm">Profissionais</p>
                 </div>
               </div>
               
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm border border-white/10">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-yellow-500/10 backdrop-blur-sm border border-yellow-500/20">
                   <Trophy className="text-yellow-500 h-6 w-6" />
                 </div>
                 <div className="text-left">
                   <p className="text-white font-bold">500+</p>
-                  <p className="text-white/60 text-sm">Clientes Satisfeitos</p>
+                  <p className="text-white/70 text-sm">Clientes Satisfeitos</p>
                 </div>
               </div>
             </div>
@@ -116,9 +116,9 @@ const Hero = () => {
                   <h2 className="text-4xl font-bold bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">
                     MUSCULAÇÃO
                   </h2>
-                  <div className="mt-4 px-6 py-2 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 inline-flex items-center gap-2">
+                  <div className="mt-4 px-6 py-2 bg-maisvida-green/10 backdrop-blur-sm rounded-full border border-maisvida-green/20 inline-flex items-center gap-2">
                     <span className="w-2 h-2 bg-maisvida-green rounded-full animate-pulse"></span>
-                    <span className="text-white/80 text-sm">Aberto 24 horas</span>
+                    <span className="text-white/90 text-sm font-medium">Aberto 24 horas</span>
                   </div>
                 </div>
               </div>
@@ -133,7 +133,7 @@ const Hero = () => {
             className="group flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity"
           >
             <span className="text-white/60 text-sm mb-2 group-hover:text-white transition-colors">Descubra Mais</span>
-            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-sm border border-white/10 group-hover:bg-white/10 transition-colors">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-maisvida-green/10 backdrop-blur-sm border border-maisvida-green/20 group-hover:bg-maisvida-green/20 transition-colors">
               <ChevronDown className="text-white h-4 w-4 animate-bounce" />
             </div>
           </button>

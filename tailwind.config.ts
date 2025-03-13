@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Montserrat', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -98,6 +101,10 @@ export default {
 				'pulse-line': {
 					'0%, 100%': { transform: 'translateX(-100%)' },
 					'50%, 60%': { transform: 'translateX(100%)' },
+				},
+				'glow': {
+					'0%, 100%': { opacity: 0.5 },
+					'50%': { opacity: 1 },
 				}
 			},
 			animation: {
@@ -105,6 +112,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'heartbeat': 'heartbeat 2s ease-in-out infinite',
 				'pulse-line': 'pulse-line 3s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'gym-pattern': "url('/public/gym-pattern.png')",

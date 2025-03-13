@@ -36,11 +36,13 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
-      <Hero />
-      <About />
-      <Plans />
-      <AppSection />
-      <Contact />
+      <div className="bg-gradient-to-b from-black via-maisvida-dark to-black">
+        <Hero />
+        <About />
+        <Plans />
+        <AppSection />
+        <Contact />
+      </div>
       <Footer />
     </div>
   );
