@@ -62,44 +62,30 @@ const AppSection = () => {
           </div>
           
           <div className="w-full lg:w-1/2 relative">
-            <div className="bg-maisvida-green/10 rounded-3xl p-8 relative">
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-maisvida-green rounded-full flex items-center justify-center text-white font-bold text-lg">
+            <div className="bg-maisvida-green/10 rounded-3xl md:p-8 p-4  relative">
+              <div className="absolute -top-0 -right-1 w-24 h-24 bg-maisvida-green rounded-full flex items-center justify-center text-white font-bold text-lg">
                 NOVO!
               </div>
-              <div className="bg-black rounded-2xl shadow-2xl w-64 mx-auto overflow-hidden">
-                <div className="h-12 bg-black relative flex items-center justify-center">
-                  <div className="w-24 h-5 bg-gray-800 rounded-b-xl"></div>
-                </div>
-                <div className="p-4 bg-black">
-                  <img 
-                    src="/lovable-uploads/297c7f25-31fc-4cbb-93a9-ca3a77819f69.png" 
-                    alt="App Mais Vida" 
-                    className="h-12 mx-auto mb-4"
-                  />
-                  <div className="bg-gray-900 rounded-lg p-3 mb-3">
-                    <div className="h-4 w-3/4 bg-maisvida-green/30 rounded mb-2"></div>
-                    <div className="h-3 w-1/2 bg-maisvida-green/20 rounded"></div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 mb-3">
-                    <div className="bg-gray-900 rounded-lg p-2">
-                      <div className="h-10 w-10 bg-maisvida-red/20 rounded-full mx-auto mb-2"></div>
-                      <div className="h-2 w-12 bg-gray-800 rounded mx-auto"></div>
-                    </div>
-                    <div className="bg-gray-900 rounded-lg p-2">
-                      <div className="h-10 w-10 bg-maisvida-green/20 rounded-full mx-auto mb-2"></div>
-                      <div className="h-2 w-12 bg-gray-800 rounded mx-auto"></div>
+              <div className="bg-black flex justify-center mx-auto">
+                  {/* Moldura externa do "celular" */}
+                  <div className="w-72 my-7 h-[570px] bg-gray-500 rounded-[60px] border-[14px] border-gray-500 shadow-xl">
+                    {/* Conteúdo interno */}
+                    <div className="relative w-full h-full bg-black rounded-[48px] overflow-hidden">
+                      {/* Imagem preenche todo o espaço */}
+                      <img
+                        src="public\ScaFIT-tela.jpeg"
+                        alt="ScaFIT tela"
+                        className="w-full h-full object-cover translate-y-[-1%]"
+                      />
+
+                      {/* Barra superior sobreposta à imagem */}
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-6 bg-gray-800 rounded-b-3xl" />
                     </div>
                   </div>
-                  <div className="bg-gray-900 rounded-lg p-3 mb-3">
-                    <div className="h-3 w-full bg-maisvida-green/20 rounded mb-2"></div>
-                    <div className="h-3 w-full bg-maisvida-green/20 rounded mb-2"></div>
-                    <div className="h-3 w-3/4 bg-maisvida-green/20 rounded"></div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

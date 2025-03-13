@@ -1,7 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, HeartPulse, Dumbbell, Clock, Plus, Activity, CalendarDays, Phone } from 'lucide-react';
-import { Button } from "@/components/ui/button";
+import { Dumbbell, Clock, Plus, Activity, CalendarDays, Phone } from 'lucide-react';
+
 
 const Navbar = () => {
 
@@ -42,6 +42,9 @@ const Navbar = () => {
       })
     }
   }
+
+  const pcView = "md:h-8 md:w-8"
+
   return (
     <nav className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-md rounded-full px-4 py-2 border border-primary/30 shadow-lg shadow-primary/20">
     <ul className="flex space-x-2 md:space-x-6">
@@ -51,7 +54,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "sobre" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Sobre"
         >
-          <Dumbbell className="h-5 w-5" />
+          <Dumbbell className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
@@ -60,7 +63,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "horarios" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Horários"
         >
-          <Clock className="h-5 w-5" />
+          <Clock className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
@@ -69,7 +72,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "novidades" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Novidades"
         >
-          <Plus className="h-5 w-5" />
+          <Plus className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
@@ -78,7 +81,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "planos" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Planos"
         >
-          <Activity className="h-5 w-5" />
+          <Activity className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
@@ -87,7 +90,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "calendario" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Calendário"
         >
-          <CalendarDays className="h-5 w-5" />
+          <CalendarDays className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
@@ -96,7 +99,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "contato" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Contato"
         >
-          <Phone className="h-5 w-5" />
+          <Phone className={`${pcView} h-5 w-5`} />
         </button>
       </li>
     </ul>

@@ -1,85 +1,124 @@
+import { AlertCircle, Calendar, ChevronLeft, ChevronRight, PartyPopper } from 'lucide-react'
+import  { useState } from 'react'
 
-import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
-import { 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardHeader, 
-  CardTitle 
-} from "@/components/ui/card";
-import { 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger 
-} from "@/components/ui/tabs";
-import { CalendarIcon, Calendar as CalendarSchedule, AlertTriangle, PartyPopper } from "lucide-react";
-
-type Event = {
-  id: number;
-  date: Date;
-  title: string;
-  type: "event" | "closed" | "party";
-  description: string;
-};
-
-const CalendarSection = () => {
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  
-  // Sample events data
-  const events: Event[] = [
-    {
-      id: 1,
-      date: new Date(2024, 6, 15), // July 15, 2024
-      title: "Avaliação Física",
-      type: "event",
-      description: "Avaliações físicas gratuitas para novos alunos."
-    },
-    {
-      id: 2,
-      date: new Date(2024, 6, 20), // July 20, 2024
-      title: "Academia Fechada",
-      type: "closed",
-      description: "Academia fechada para manutenção de equipamentos."
-    },
-    {
-      id: 3,
-      date: new Date(2024, 7, 5), // August 5, 2024
-      title: "Confraternização de Aniversário",
-      type: "party",
-      description: "Celebração do 3º aniversário da Mais Vida."
-    },
-    {
-      id: 4,
-      date: new Date(2024, 7, 10), // August 10, 2024
-      title: "Workshop de Nutrição",
-      type: "event",
-      description: "Workshop sobre nutrição esportiva com especialistas."
-    }
+  // Dados do calendário
+  const diasEspeciais = [
+    { data: "2025-01-05", tipo: "confraternizacao", titulo: "Confraternização Universal", descricao: "Retorno às atividades da academia" },
+    { data: "2025-02-09", tipo: "confraternizacao", titulo: "Aniversário MaisVida", descricao: "Comemoração especial de aniversário" },
+    { data: "2025-02-17", tipo: "evento", titulo: "CrossVida", descricao: "Evento especial de treinamento funcional" },
+    { data: "2025-02-17", tipo: "fechado", titulo: "Carnaval", descricao: "Academia fechada" },
+    { data: "2025-02-18", tipo: "fechado", titulo: "Cinzas", descricao: "Academia fechada" },
+    { data: "2025-03-05", tipo: "fechado", titulo: "Data Magna", descricao: "A Data Magna, celebrada em 25 de março, é um feriado estadual no Ceará que comemora a abolição da escravidão no estado em 1884, quatro anos antes da Lei Áurea no Brasil." },
+    { data: "2025-03-05", tipo: "evento", titulo: "Em Busca do Resultado", descricao: "Programa motivacional para alunos" },
+    { data: "2025-03-08", tipo: "fechado", titulo: "Dia da Mulher", descricao: "Academia fechada" },
+    { data: "2025-03-19", tipo: "fechado", titulo: "São José", descricao: "Academia fechada" },
+    { data: "2025-04-10", tipo: "fechado", titulo: "Semana Santa", descricao: "Sexta e Sábado para Semana Santa" },
+    { data: "2025-04-12", tipo: "evento", titulo: "Resultados EBR", descricao: "Academia fechada" },
+    { data: "2025-04-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
+    { data: "2025-04-21", tipo: "fechado", titulo: "Tiradentes", descricao: "Academia fechada" },
+    { data: "2025-05-04", tipo: "fechado", titulo: "Dia do Trabalho", descricao: "Academia fechada" },
+    { data: "2025-05-12", tipo: "fechado", titulo: "Dia das Mães", descricao: "O Dia das Mães, celebrado no segundo domingo de maio, é uma data especial dedicada a homenagear e celebrar todas as mães." },
+    { data: "2025-06-08", tipo: "fechado", titulo: "Corpus Christi", descricao: "Corpus Christi é um feriado religioso celebrado na quinta-feira após o domingo da Santíssima Trindade. " },
+    { data: "2025-06-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
+    { data: "2025-06-12", tipo: "fechado", titulo: "Dia dos Namorados", descricao: "Dia especial para os casais" },
+    { data: "2025-06-20", tipo: "confraternizacao", titulo: "Arraiá", descricao: "Festa junina na academia" },
+    { data: "2025-07-20", tipo: "evento", titulo: "Dia do Amigo", descricao: "Treine com um amigo" },
+    { data: "2025-08-15", tipo: "fechado", titulo: "Dia do Município", descricao: "Academia fechada" },
+    { data: "2025-08-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
+    { data: "2025-08-25", tipo: "fechado", titulo: "Dia dos Pais", descricao: "Academia fechada" },
+    { data: "2025-09-07", tipo: "fechado", titulo: "Independência do Brasil", descricao: "Academia fechada" },
+    { data: "2025-09-15", tipo: "evento", titulo: "Dia do Profissional de Educação Física", descricao: "Homenagem aos professores" },
+    { data: "2025-10-12", tipo: "fechado", titulo: "Nossa Senhora Aparecida", descricao: "Academia fechada" },
+    { data: "2025-10-31", tipo: "evento", titulo: "Halloween", descricao: "Treino temático" },
+    { data: "2025-10-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
+    { data: "2025-11-05", tipo: "evento", titulo: "Em Busca do Resultado", descricao: "Programa motivacional para alunos" },
+    { data: "2025-11-02", tipo: "fechado", titulo: "Finados", descricao: "Academia fechada" },
+    { data: "2025-11-15", tipo: "fechado", titulo: "Proclamação da República", descricao: "Academia fechada" },
+    { data: "2025-11-20", tipo: "fechado", titulo: "Consciência Negra", descricao: "Academia fechada" },
+    { data: "2025-12-10", tipo: "fechado", titulo: "Padroeira de Limoeiro", descricao: "Academia fechada" },
+    { data: "2025-12-13", tipo: "fechado", titulo: "Santa Luzia", descricao: "Academia fechada" },
+    { data: "2025-12-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
+    { data: "2025-12-20", tipo: "confraternizacao", titulo: "Confraternização de Fim de Ano", descricao: "Encerramento das atividades do ano" },
+    { data: "2025-12-25", tipo: "fechado", titulo: "Recesso (Natal e Réveillon)", descricao: "Academia fechada" },
+    { data: "2025-12-12", tipo: "evento", titulo: "Resultados EBR", descricao: "Academia fechada" },
   ];
-
-  // Find events for the selected date
-  const selectedDateEvents = date 
-    ? events.filter(event => 
-        event.date.getDate() === date.getDate() && 
-        event.date.getMonth() === date.getMonth() && 
-        event.date.getFullYear() === date.getFullYear()
-      )
-    : [];
-
-  // Find upcoming events (next 30 days)
-  const today = new Date();
-  const thirtyDaysLater = new Date();
-  thirtyDaysLater.setDate(today.getDate() + 30);
   
-  const upcomingEvents = events.filter(event => 
-    event.date >= today && event.date <= thirtyDaysLater
-  ).sort((a, b) => a.date.getTime() - b.date.getTime());
+
+const CalendarSectionComponent = () => {
+  const [selectedEvent, setSelectedEvent] = useState<number | null>(null)
+  const [currentMonth, setCurrentMonth] = useState(new Date())
+
+
+  // Funções do calendário
+  const navegarMes = (direcao: number) => {
+    const novoMes = new Date(currentMonth)
+    novoMes.setMonth(novoMes.getMonth() + direcao)
+    setCurrentMonth(novoMes)
+    setSelectedEvent(null)
+  }
+
+  const formatarMesAno = (data: Date) => {
+    return data.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
+  }
+
+  const getEventosDoMes = () => {
+    const mes = currentMonth.getMonth() + 1
+    const ano = currentMonth.getFullYear()
+
+    return diasEspeciais
+      .filter((evento) => {
+        const dataEvento = new Date(evento.data)
+        return dataEvento.getMonth() + 1 === mes && dataEvento.getFullYear() === ano
+      })
+      .sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime())  }
+
+
+  const getIconePorTipo = (tipo: string) => {
+    switch (tipo) {
+      case "fechado":
+        return <AlertCircle className="h-5 w-5 text-red-400" />
+      case "evento":
+        return <Calendar className="h-5 w-5 text-primary" />
+      case "confraternizacao":
+        return <PartyPopper className="h-5 w-5 text-yellow-400" />
+      default:
+        return <Calendar className="h-5 w-5 text-gray-400" />
+    }
+  }
+
+  const getCorPorTipo = (tipo: string) => {
+    switch (tipo) {
+      case "fechado":
+        return "bg-red-900/20 text-red-200 border-red-800"
+      case "evento":
+        return "bg-primary/20 text-primary border-primary/50"
+      case "confraternizacao":
+        return "bg-yellow-900/20 text-yellow-200 border-yellow-800"
+      default:
+        return "bg-gray-800 text-gray-200 border-gray-700"
+    }
+  }
+
+  const getNomeTipo = (tipo: string) => {
+    switch (tipo) {
+      case "fechado":
+        return "Academia Fechada"
+      case "evento":
+        return "Evento"
+      case "confraternizacao":
+        return "Confraternização"
+      default:
+        return "Outro"
+    }
+  }
+
+  const eventosDoMes = getEventosDoMes()
+  const temEventos = eventosDoMes.length > 0
+
 
   return (
-    <section id="calendar" className="py-20 bg-black text-white">
-      <div className="container mx-auto px-4">
+    <section id="calendar" className="py-16 md:py-24 bg-black">
+   <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">CALENDÁRIO <span className="text-maisvida-green">MAIS VIDA</span></h2>
           <div className="w-24 h-1 bg-maisvida-red mb-6 mx-auto"></div>
@@ -87,165 +126,118 @@ const CalendarSection = () => {
             Confira os próximos eventos, dias fechados e confraternizações da academia.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="col-span-1 animate-on-scroll">
-            <Card className="bg-maisvida-dark border-maisvida-green/30 h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CalendarIcon className="h-5 w-5 text-maisvida-green" />
-                  <span>Calendário de Eventos</span>
-                </CardTitle>
-                <CardDescription className="text-gray-400">
-                  Selecione uma data para ver os eventos
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Calendar 
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  className="rounded-md bg-maisvida-dark text-white p-0"
-                  classNames={{
-                    day_today: "bg-maisvida-green/20 text-white",
-                    day_selected: "bg-maisvida-green text-black hover:bg-maisvida-green hover:text-black",
-                  }}
-                />
-              </CardContent>
-            </Card>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
+        <div className="bg-maisvida-dark border-maisvida-green/30 rounded-lg shadow-md p-6 border animate-on-scroll">
+          <div className="flex justify-between items-center mb-6">
+            <button
+              onClick={() => navegarMes(-1)}
+              className="p-2 rounded-full hover:bg-gray-800 text-gray-300"
+              aria-label="Mês anterior"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <h3 className="text-xl font-semibold capitalize text-white">{formatarMesAno(currentMonth)}</h3>
+            <button
+              onClick={() => navegarMes(1)}
+              className="p-2 rounded-full hover:bg-gray-800 text-gray-300"
+              aria-label="Próximo mês"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
-          
-          <div className="col-span-1 lg:col-span-2 animate-on-scroll">
-            <Tabs defaultValue="selected" className="h-full">
-              <TabsList className="bg-maisvida-dark border border-maisvida-green/30 mb-6">
-                <TabsTrigger value="selected" className="data-[state=active]:bg-maisvida-green data-[state=active]:text-black">
-                  Data Selecionada
-                </TabsTrigger>
-                <TabsTrigger value="upcoming" className="data-[state=active]:bg-maisvida-green data-[state=active]:text-black">
-                  Próximos Eventos
-                </TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="selected" className="mt-0 h-full">
-                <Card className="bg-maisvida-dark border-maisvida-green/30 h-full">
-                  <CardHeader>
-                    <CardTitle>
-                      {date ? date.toLocaleDateString('pt-BR', { 
-                        weekday: 'long', 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      }) : "Nenhuma data selecionada"}
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">
-                      {selectedDateEvents.length 
-                        ? `${selectedDateEvents.length} evento${selectedDateEvents.length > 1 ? 's' : ''} nesta data` 
-                        : "Nenhum evento nesta data"}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {selectedDateEvents.length > 0 ? (
-                      <div className="space-y-4">
-                        {selectedDateEvents.map(event => (
-                          <div key={event.id} className="bg-black/50 p-4 rounded-lg border border-maisvida-green/20 flex">
-                            <div className="mr-4 pt-1">
-                              {event.type === "event" && (
-                                <CalendarSchedule className="h-6 w-6 text-maisvida-green" />
-                              )}
-                              {event.type === "closed" && (
-                                <AlertTriangle className="h-6 w-6 text-maisvida-red" />
-                              )}
-                              {event.type === "party" && (
-                                <PartyPopper className="h-6 w-6 text-maisvida-green" />
-                              )}
-                            </div>
-                            <div>
-                              <h4 className={`text-lg font-semibold ${
-                                event.type === "event" ? "text-maisvida-green" : 
-                                event.type === "closed" ? "text-maisvida-red" : 
-                                "text-maisvida-green"
-                              }`}>
-                                {event.title}
-                              </h4>
-                              <p className="text-gray-400 mt-1">{event.description}</p>
-                            </div>
-                          </div>
-                        ))}
+
+          {temEventos ? (
+            <div className="space-y-4">
+              {eventosDoMes.map((evento, index) => (
+                <div
+                  key={index}
+                  className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                    selectedEvent === index ? getCorPorTipo(evento.tipo) : "border-gray-700 hover:bg-gray-800"
+                  }`}
+                  onClick={() => setSelectedEvent(selectedEvent === index ? null : index)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      {getIconePorTipo(evento.tipo)}
+                      <span className="font-medium text-white">{evento.titulo}</span>
+                    </div>
+                    {/* <span className="text-sm text-gray-400">{formatarData(evento.data)}</span> */}
+                  </div>
+
+                  {selectedEvent === index && (
+                    <div className="mt-3 pt-3 border-t border-gray-700">
+                      <div className="mb-2">
+                        <span
+                          className={`inline-block px-2 py-0.5 text-xs rounded-full ${getCorPorTipo(evento.tipo)}`}
+                        >
+                          {getNomeTipo(evento.tipo)}
+                        </span>
                       </div>
-                    ) : (
-                      <div className="flex flex-col items-center justify-center py-8">
-                        <CalendarIcon className="h-12 w-12 text-gray-500 mb-4" />
-                        <p className="text-gray-400 text-center">
-                          Não há eventos programados para esta data. <br />
-                          Selecione outra data ou confira os próximos eventos.
-                        </p>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="upcoming" className="mt-0 h-full">
-                <Card className="bg-maisvida-dark border-maisvida-green/30 h-full">
-                  <CardHeader>
-                    <CardTitle>Próximos 30 Dias</CardTitle>
-                    <CardDescription className="text-gray-400">
-                      {upcomingEvents.length 
-                        ? `${upcomingEvents.length} evento${upcomingEvents.length > 1 ? 's' : ''} nos próximos 30 dias` 
-                        : "Nenhum evento nos próximos 30 dias"}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    {upcomingEvents.length > 0 ? (
-                      <div className="space-y-4">
-                        {upcomingEvents.map(event => (
-                          <div key={event.id} className="bg-black/50 p-4 rounded-lg border border-maisvida-green/20 flex">
-                            <div className="mr-4 pt-1">
-                              {event.type === "event" && (
-                                <CalendarSchedule className="h-6 w-6 text-maisvida-green" />
-                              )}
-                              {event.type === "closed" && (
-                                <AlertTriangle className="h-6 w-6 text-maisvida-red" />
-                              )}
-                              {event.type === "party" && (
-                                <PartyPopper className="h-6 w-6 text-maisvida-green" />
-                              )}
-                            </div>
-                            <div>
-                              <div className="flex justify-between">
-                                <h4 className={`text-lg font-semibold ${
-                                  event.type === "event" ? "text-maisvida-green" : 
-                                  event.type === "closed" ? "text-maisvida-red" : 
-                                  "text-maisvida-green"
-                                }`}>
-                                  {event.title}
-                                </h4>
-                                <span className="text-sm text-gray-400">
-                                  {event.date.toLocaleDateString('pt-BR')}
-                                </span>
-                              </div>
-                              <p className="text-gray-400 mt-1">{event.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-center justify-center py-8">
-                        <CalendarIcon className="h-12 w-12 text-gray-500 mb-4" />
-                        <p className="text-gray-400 text-center">
-                          Não há eventos programados para os próximos 30 dias.
-                        </p>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
+                      <p className="text-gray-300">{evento.descricao}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <Calendar className="h-12 w-12 text-gray-600 mx-auto mb-4" />
+              <h4 className="text-lg font-medium text-gray-300">Nenhum evento neste mês</h4>
+              <p className="text-gray-500 mt-2">Confira outros meses para ver eventos programados.</p>
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-4 ">
+          <div className="bg-maisvida-dark rounded-lg shadow-md p-6 border border-maisvida-green/30">
+            <h3 className="text-xl font-semibold mb-4 text-white">Legenda</h3>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-red-900/20 border border-red-800"></div>
+                <span className="text-gray-300">Academia Fechada</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-primary/20 border border-primary/50"></div>
+                <span className="text-gray-300">Eventos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-yellow-900/20 border border-yellow-800"></div>
+                <span className="text-gray-300">Confraternizações</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-lg bg-maisvida-dark shadow-md p-6 border border-maisvida-green/30">
+            <h3 className="text-xl font-semibold mb-2 text-white">Eventos Anuais</h3>
+            <p className="text-gray-400 mb-4">
+              Nossa academia realiza diversos eventos ao longo do ano. Fique atento ao calendário para não perder
+              nenhum!
+            </p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <Calendar className="h-4 w-4 text-primary" />
+                <span>Em Busca do Resultado - 2 vezes no ano</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <Calendar className="h-4 w-4 text-primary" />
+                <span>Crossvida - 4 vezes no ano</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <Calendar className="h-4 w-4 text-primary" />
+                <span>Festa Junina - Junho</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-300">
+                <Calendar className="h-4 w-4 text-primary" />
+                <span>Confraternização de Natal e Fim de Ano - Dezembro</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+  )
+}
 
-export default CalendarSection;
+export default CalendarSectionComponent
