@@ -9,15 +9,21 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
-  // Efecto de animación para revelar elementos al hacer scroll
+  // Enhanced animation effect for scroll reveal with staggered timing
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+          // Add staggered delay for a more professional animation flow
+          setTimeout(() => {
+            entry.target.classList.add('show');
+          }, index * 150); // Staggered timing based on element index
         }
       });
-    }, { threshold: 0.1 });
+    }, { 
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px' // Trigger slightly earlier
+    });
 
     const hiddenElements = document.querySelectorAll('.animate-on-scroll');
     hiddenElements.forEach((el) => observer.observe(el));
@@ -28,7 +34,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
       <Navbar />
       <Hero />
       <About />
