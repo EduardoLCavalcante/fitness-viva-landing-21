@@ -27,39 +27,40 @@ const LocationMap: React.FC<LocationMapProps> = ({
   useEffect(() => {
     if (!mapRef.current) return;
     
-    // Convert position to LatLngExpression
-    const mapPosition: L.LatLngTuple = position;
-    
     // Initialize map
-    const map = L.map(mapRef.current, {
-      center: mapPosition,
-      zoom: zoom,
-      zoomControl: false
-    });
+    const map = L.map(mapRef.current).setView(position, zoom);
     
     // Add tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     
-    // Add marker with custom icon
-    const customIcon = L.icon({
-      iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowSize: [41, 41]
+    // Create custom icon for marker
+    const customIcon = L.divIcon({
+      className: 'custom-map-marker',
+      html: `
+        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-maisvida-green text-white shadow-lg">
+          <div class="w-6 h-6 rounded-full bg-maisvida-green border-2 border-white flex items-center justify-center relative">
+            <span class="absolute inset-0 animate-ping bg-maisvida-green/50 rounded-full"></span>
+            <span class="text-xs text-white font-bold">+V</span>
+          </div>
+        </div>
+      `,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -32]
     });
     
-    const marker = L.marker(mapPosition, { icon: customIcon }).addTo(map);
+    // Add marker with custom icon
+    const marker = L.marker(position, { icon: customIcon }).addTo(map);
     
-    // Add popup
+    // Add popup with custom styling
     marker.bindPopup(`
-      <div class="text-center p-2">
-        <strong class="text-green-500">${popupText}</strong>
-        <p class="text-sm text-gray-600">Venha nos visitar!</p>
+      <div class="p-2 text-center">
+        <strong class="text-maisvida-green block text-lg">+ VIDA</strong>
+        <span class="block text-sm text-gray-600">Studio de Musculação</span>
+        <p class="text-sm mt-2">${popupText}</p>
+        <a href="https://maps.google.com/?q=${position[0]},${position[1]}" target="_blank" class="mt-2 inline-block px-3 py-1 bg-maisvida-green text-white text-xs rounded-full">Como chegar</a>
       </div>
     `).openPopup();
     
@@ -68,14 +69,25 @@ const LocationMap: React.FC<LocationMapProps> = ({
       map.invalidateSize();
     }, 100);
     
+    // Add custom styles to map
+    const customStyles = document.createElement('style');
+    customStyles.textContent = `
+      .custom-map-marker {
+        background: transparent;
+        border: none;
+      }
+    `;
+    document.head.appendChild(customStyles);
+    
     // Cleanup on unmount
     return () => {
       map.remove();
+      document.head.removeChild(customStyles);
     };
   }, [position, zoom, popupText]);
   
   return (
-    <div className="overflow-hidden rounded-lg shadow-lg h-[400px] md:h-[500px] w-full transition-all duration-300 hover:shadow-xl border-4 border-white/10 bg-gradient-to-br from-maisvida-green/10 to-maisvida-red/10">
+    <div className="overflow-hidden rounded-2xl shadow-2xl h-[400px] md:h-[500px] w-full bg-gradient-to-br from-black via-maisvida-dark to-black border border-white/10">
       <div ref={mapRef} className="h-full w-full z-10" />
     </div>
   );

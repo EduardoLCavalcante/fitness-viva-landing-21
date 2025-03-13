@@ -17,12 +17,12 @@ const Index = () => {
           // Add staggered delay for a more professional animation flow
           setTimeout(() => {
             entry.target.classList.add('show');
-          }, index * 150); // Staggered timing based on element index
+          }, index * 120); // Slightly faster staggered timing
         }
       });
     }, { 
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px' // Trigger slightly earlier
+      threshold: 0.1, // Trigger earlier
+      rootMargin: '0px 0px -100px 0px'
     });
 
     const hiddenElements = document.querySelectorAll('.animate-on-scroll');
@@ -34,7 +34,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
+    <div className="min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
       <Hero />
       <About />
