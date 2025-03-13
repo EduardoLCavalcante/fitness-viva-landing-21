@@ -40,17 +40,17 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 relative overflow-hidden">
+    <section id="contact" className="py-20 bg-black relative overflow-hidden">
       {/* Patrones decorativos */}
-      <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent opacity-70"></div>
+      <div className="absolute top-0 left-0 w-full h-40  opacity-70"></div>
       <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-maisvida-green/5 rounded-full blur-3xl"></div>
       <div className="absolute top-1/4 left-10 w-20 h-20 bg-maisvida-red/5 rounded-full blur-2xl animate-pulse"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-maisvida-dark mb-4">ENTRE EM <span className="text-maisvida-green">CONTATO</span></h2>
+          <h2 className="text-4xl font-bold text-maisvida-white mb-4">ENTRE EM <span className="text-maisvida-green">CONTATO</span></h2>
           <div className="w-24 h-1 bg-maisvida-red mb-6 mx-auto"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto">
             Estamos prontos para ajudar você a iniciar sua jornada de transformação. Fale conosco!
           </p>
         </div>
@@ -66,7 +66,7 @@ const Contact = () => {
                     <MapPin className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Localização</h4>
+                    <h4 className="font-semibold text-gray-700">Localização</h4>
                     <p className="text-gray-600">Av. Principal, 1000 - Centro</p>
                     <p className="text-gray-600">São Paulo, SP - Brasil</p>
                   </div>
@@ -77,7 +77,7 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Telefone</h4>
+                    <h4 className="font-semibold text-gray-700">Telefone</h4>
                     <p className="text-gray-600">+55 (11) 99999-9999</p>
                     <p className="text-gray-600">+55 (11) 3333-3333</p>
                   </div>
@@ -88,7 +88,7 @@ const Contact = () => {
                     <Mail className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Email</h4>
+                    <h4 className="font-semibold text-gray-700">Email</h4>
                     <p className="text-gray-600">contato@maisvida.com.br</p>
                     <p className="text-gray-600">suporte@maisvida.com.br</p>
                   </div>
@@ -96,9 +96,9 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white text-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6">Horário de Funcionamento</h3>
-              <div className="space-y-3">
+              <div className="space-y-3 ">
                 <div className="flex justify-between">
                   <span className="font-semibold">Segunda - Sexta:</span>
                   <span className="text-gray-600">6:00 - 22:00</span>
@@ -117,7 +117,7 @@ const Contact = () => {
           
           <div className="lg:col-span-2 grid grid-cols-1 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <h3 className="text-2xl font-bold mb-6">Envie uma Mensagem</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-700">Envie uma Mensagem</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">

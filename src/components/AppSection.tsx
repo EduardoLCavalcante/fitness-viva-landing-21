@@ -27,11 +27,11 @@ const AppSection = () => {
   ];
 
   return (
-    <section id="app" className="py-20 bg-white">
+    <section id="app" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 lg:pr-16 mb-12 lg:mb-0">
-            <h2 className="text-4xl font-bold text-maisvida-dark mb-4">NOSSO <span className="text-maisvida-green">APLICATIVO</span></h2>
+            <h2 className="text-4xl font-bold text-maisvida-white mb-4">NOSSO <span className="text-maisvida-green">APLICATIVO</span></h2>
             <div className="w-24 h-1 bg-maisvida-red mb-6"></div>
             <p className="text-lg text-gray-600 mb-8">
               O aplicativo Mais Vida foi desenvolvido para proporcionar uma experiência completa aos nossos alunos. Com ele, você tem acesso ao seu treino, agenda, avaliações e muito mais, tudo na palma da sua mão.

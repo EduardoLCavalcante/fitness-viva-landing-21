@@ -1,105 +1,253 @@
 
-import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
+import { ArrowRight, Check } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion"
 const Plans = () => {
-  const plans = [
+  const planos = [
     {
-      name: "Básico",
-      price: "89,90",
-      period: "mensal",
-      features: [
-        "Acesso à área de musculação",
-        "Avaliação física inicial",
-        "Plano de treino personalizado",
-        "Acesso ao aplicativo básico"
-      ],
-      highlight: false,
-      buttonText: "Assinar Agora"
+      nome: "Básico",
+      type: "mensal",
+      class: "default" ,
+      preco: "R$ 90,00",
+      precofidelidade: "R$ 79,90",
+      descricao: "Ideal para iniciantes",
+      recursos: ["Acesso à musculação", "Horário comercial", "Avaliação física trimestral", "Acesso ao app básico"],
     },
     {
-      name: "Premium",
-      price: "149,90",
-      period: "mensal",
-      features: [
-        "Todos os benefícios do plano Básico",
-        "Consulta com nutricionista",
-        "Acesso a aulas coletivas",
-        "Acesso completo ao aplicativo",
-        "Acompanhamento semanal"
+      nome: "Anual",
+      type: "fidelidade",
+      class: "default" ,
+      preco: "R$ 129,90",
+      precofidelidade: "R$ 75,00",
+      descricao: "Nosso plano mais popular.\nPAGAMENTO MENSAL." ,
+      destaque: true,
+      recursos: [
+        "Acesso à musculação",
+        
+        "Horário integral",
+        
+        "Acesso ao app completo",
+        
       ],
-      highlight: true,
-      buttonText: "Assinar Agora"
     },
     {
-      name: "Família",
-      price: "199,90",
-      period: "mensal",
-      features: [
-        "Benefícios do plano Premium",
-        "Até 3 dependentes",
-        "Horários exclusivos",
-        "Desconto em produtos parceiros",
-        "Estacionamento gratuito"
+      nome: "Semestral",
+      type: "fidelidade",
+      class: "default" ,
+      preco: "R$ 199,90",
+      precofidelidade: "R$ 80,00",
+      descricao: "PAGAMENTO MENSAL",
+      recursos: [
+        "Acesso à musculação",
+        
+        "Horário integral",
+        
+        "Acesso ao app completo",
+        
       ],
-      highlight: false,
-      buttonText: "Assinar Agora"
-    }
-  ];
+    },
+    {
+      nome: "Trimestral",
+      type: "fidelidade",
+      class: "default" ,
+      preco: "R$ 199,90",
+      precofidelidade: "R$ 85,00",
+      descricao: "PAGAMENTO MENSAL",
+      recursos: [
+        "Acesso à musculação",
+        
+        "Horário integral",
+        
+        "Acesso ao app completo",
+        
+      ],
+    },
+    {
+      nome: "Plano Anual PREMIUM",
+      type: "fidelidade",
+      class: "premium" ,
+      preco: "R$ 199,90",
+      precofidelidade: "Escolha a opção",
+      descricao: "PAGAMENTO MENSAL",
+      recursos: [
+        "Acesso à musculação",
+        `Avaliação física a cada 3 meses - R$ 90,00`,	
+        "Horário integral",
+        "Mudança no treino a cada 3 meses - R$ 90,00",
+        "Acesso ao app completo",
+        "PC + Divulgação da marca na TV - R$ 120,00",
+        "EBR - Participação no projeto Em Busca do resultado - R$ 90,00",
+        "Nutricionista (1x por mês) + Prescrição de treino - R$ 150,00",
+      ],
+    },
+    {
+      nome: "Plano Semestral GOLD",
+      type: "fidelidade",
+      class: "gold" ,
+      preco: "R$ 199,90",
+      precofidelidade: "Escolha a opção",
+      descricao: "PAGAMENTO MENSAL",
+      recursos: [
+        "Acesso à musculação",
+        "Avaliação física a cada 2 meses - R$ 100,00",
+        "Horário integral",
+        "Mudança no treino a cada 2 meses - R$ 100,00",
+        "Acesso ao app completo",
+        "PC + Divulgação da marca na TV - R$ 125,00",
+        "EBR - Participação no projeto Em Busca do resultado - R$ 95,00",
+        "Nutricionista (1x por mês) + Prescrição de treino - R$ 155,00",
+      ],
+    },
+    {
+      nome: "Plano Trimestral SILVER",
+      type: "fidelidade",
+      class: "silver" ,
+      preco: "R$ 199,90",
+      precofidelidade: "Escolha a opção",
+      descricao: "PAGAMENTO MENSAL",
+      recursos: [
+        "Acesso à musculação",
+        "Avaliação física a cada mes - R$ 130,00",
+        "Horário integral",
+        "Mudança no treino a cada mes - R$ 130,00",
+        "Acesso ao app completo",
+        "PC + Divulgação da marca na TV - R$ 125,00",
+      ],
+    },
+  ]
+
+const pacotes = [
+    {
+      nome: "Casal",
+      preco: "R$ 85,00",
+      descricao: "Plano Premium para duas pessoas",
+      desconto: "Economia de R$ 10,00",
+    },
+    {
+      nome: "Família",
+      preco: "R$ 85,00",
+      descricao: "Plano Premium para até 4 pessoas",
+      desconto: "Economia de R$ 20,00",
+    },
+  ]
+
+const daysAndWeeks = [
+  {
+    nome: "Diária",
+    descricao: "Acesso à musculação por um dia",
+    preco: "R$ 15,00",
+  },
+  {
+    nome: "Semanal",
+    descricao: "Acesso à musculação durante a semana",
+    preco: "R$ 30,00",
+  },
+]
+const [annual, setAnnual] = useState(false)
+  
+const type = annual? "fidelidade" : "mensal"
+
+ const pcView = "max-w-6xl "
+
 
   return (
-    <section id="plans" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-maisvida-dark mb-4">NOSSOS <span className="text-maisvida-green">PLANOS</span></h2>
-          <div className="w-24 h-1 bg-maisvida-red mb-6 mx-auto"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Escolha o plano perfeito para atingir seus objetivos e transformar sua vida.
-          </p>
-        </div>
+    <section id="plans" className="py-20 bg-black">
+    <div className="container mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <span className="text-white">Escolha seu </span>
+          <span className="text-green-500">Plano</span>
+        </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+          Oferecemos planos flexíveis para atender às suas necessidades e objetivos. Comece sua jornada de
+          transformação hoje mesmo.
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`rounded-lg overflow-hidden ${plan.highlight ? 'transform md:-translate-y-4 shadow-xl border-2 border-maisvida-green' : 'shadow-lg'}`}
-            >
-              <div className={`p-8 ${plan.highlight ? 'bg-maisvida-green text-white' : 'bg-white text-maisvida-dark'}`}>
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="flex items-end mb-4">
-                  <span className="text-4xl font-bold">R$ {plan.price}</span>
-                  <span className="ml-1 text-sm opacity-80">/{plan.period}</span>
-                </div>
-                {plan.highlight && (
-                  <div className="bg-white text-maisvida-green text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
-                    Mais Popular
-                  </div>
-                )}
+        <div className="flex items-center justify-center mb-8">
+          <span className={`mr-3 ${annual ? "text-gray-400" : "text-white font-medium"}`}>Mensal</span>
+          <button
+            onClick={() => setAnnual(!annual)}
+            className="relative inline-flex h-6 w-12 items-center rounded-full bg-gray-800 transition-colors focus:outline-none"
+          >
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                annual ? "translate-x-7" : "translate-x-1"
+              }`}
+            />
+          </button>
+          <span className={`ml-3 ${annual ? "text-white font-medium" : "text-gray-400"}`}>Anual</span>
+          <span className="ml-2 inline-flex items-center rounded-full bg-green-500/20 px-2 py-1 text-xs font-medium text-green-500">
+            Economize 20%
+          </span>
+        </div>
+      </motion.div>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        {planos.filter(planos => planos.type === type ).map((plan, index) => (
+          <motion.div
+            key={plan.nome}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className={`relative rounded-2xl overflow-hidden border ${
+              plan.destaque ? "border-green-500" : "border-gray-700"
+            } bg-gray-900/50 backdrop-blur-sm hover:transform hover:scale-105 transition-all duration-300`}
+          >
+            {plan.destaque && (
+              <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                POPULAR
               </div>
-              <div className="bg-white p-8">
-                <ul className="mb-8 space-y-4">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <Check className="h-5 w-5 text-maisvida-green mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  className={`w-full py-6 ${
-                    plan.highlight 
-                      ? 'bg-maisvida-green hover:bg-maisvida-green/80 text-white' 
-                      : 'bg-white border-2 border-maisvida-green text-maisvida-green hover:bg-maisvida-green/10'
-                  }`}
-                >
-                  {plan.buttonText}
-                </Button>
+            )}
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-1">{plan.nome}</h3>
+              <p className="text-gray-400 text-sm mb-4">{plan.descricao}</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">
+                  {annual ? plan.class ==="default"? `R$${plan.precofidelidade}`: `${plan.precofidelidade}` : `R$${plan.preco}`}
+                </span>
+                <span className="text-gray-400 ml-2">{annual ? plan.class ==="default"? "/ano" :"" : "/mês"}</span>
+              </div>
+
+              <button
+                className="w-full py-3 rounded-lg mb-6 flex items-center justify-center gap-2 transition-all duration-300 bg-gray-700 hover:bg-gray-600 text-white"
+              >
+                Assinar Agora <ArrowRight size={16} />
+              </button>
+
+              <div className="space-y-3">
+                <p className="font-medium text-sm">Escolha uma opção :</p>
+                {plan.recursos.map((feature) => (
+                  <div key={feature} className="flex items-start">
+                    <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
+                    <span className="text-sm text-gray-300">{feature}</span>
+                  </div>
+                ))}
+
+                {/* {plan.notIncluded.length > 0 && (
+                  <>
+                    <p className="font-medium text-sm mt-4">Não incluído:</p>
+                    {plan.notIncluded.map((feature) => (
+                      <div key={feature} className="flex items-start">
+                        <X className="h-5 w-5 text-gray-500 mr-2 flex-shrink-0" />
+                        <span className="text-sm text-gray-400">{feature}</span>
+                      </div>
+                    ))}
+                  </>
+                )} */}
               </div>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 
