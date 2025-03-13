@@ -5,6 +5,8 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Plans from "@/components/Plans";
 import AppSection from "@/components/AppSection";
+import CalendarSection from "@/components/Calendar";
+import GallerySection from "@/components/GallerySection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -39,7 +41,9 @@ const Index = () => {
       <div className="bg-gradient-to-b from-black via-maisvida-dark to-black">
         <Hero />
         <About />
+        <GallerySection />
         <Plans />
+        <CalendarSection />
         <AppSection />
         <Contact />
       </div>
