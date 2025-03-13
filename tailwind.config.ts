@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Mais Vida custom colors
+				'maisvida-green': '#4FD14F',
+				'maisvida-red': '#FF3131',
+				'maisvida-gray': '#777777',
+				'maisvida-dark': '#111111',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +90,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'heartbeat': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.05)' },
+				},
+				'pulse-line': {
+					'0%, 100%': { transform: 'translateX(-100%)' },
+					'50%, 60%': { transform: 'translateX(100%)' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'heartbeat': 'heartbeat 2s ease-in-out infinite',
+				'pulse-line': 'pulse-line 3s ease-in-out infinite',
+			},
+			backgroundImage: {
+				'gym-pattern': "url('/public/gym-pattern.png')",
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
