@@ -31,7 +31,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
   return (
     <div className="overflow-hidden rounded-lg shadow-lg h-[400px] md:h-[500px] w-full transition-all duration-300 hover:shadow-xl">
       <MapContainer 
-        center={position} 
+        center={position as L.LatLngExpression} 
         zoom={zoom} 
         style={{ height: '100%', width: '100%' }}
         zoomControl={false}
@@ -41,7 +41,7 @@ const LocationMap: React.FC<LocationMapProps> = ({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
+        <Marker position={position as L.LatLngExpression}>
           <Popup>
             <div className="text-center p-1">
               <strong className="text-maisvida-green">{popupText}</strong>
