@@ -20,7 +20,7 @@ interface LocationMapProps {
 const LocationMap: React.FC<LocationMapProps> = ({ 
   position, 
   zoom = 15, 
-  popupText = "Rua Padre Raul Vieira, 854 - Centro, Russas-CE" 
+  popupText = "" 
 }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   
@@ -57,10 +57,10 @@ const LocationMap: React.FC<LocationMapProps> = ({
     // Add popup with custom styling
     marker.bindPopup(`
       <div class="p-2 text-center">
-        <strong class="text-maisvida-green block text-lg">+ VIDA</strong>
+        <strong class="text-maisvida-green block text-lg">MAIS VIDA</strong>
         <span class="block text-sm text-gray-400">Studio de Musculação</span>
         <p class="text-sm mt-2 text-white">${popupText}</p>
-        <a href="https://maps.google.com/?q=${position[0]},${position[1]}" target="_blank" class="mt-2 inline-block px-3 py-1 bg-maisvida-green text-white text-xs rounded-full">Como chegar</a>
+        <a href="https://maps.google.com/?q=${position[0]},${position[1]}" target="_blank" class="mt-2 inline-block px-3 py-1 bg-maisvida-green font-bold hover:bg-green-700 text-sm rounded-full"><span className="text-white">Como chegar</span></a>
       </div>
     `).openPopup();
     
