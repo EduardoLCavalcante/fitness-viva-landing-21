@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white border-t border-maisvida-green/10">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="relative">
@@ -51,7 +51,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
+          {/* <div>
             <h3 className="text-xl font-bold mb-6 text-white">Serviços</h3>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-400 hover:text-maisvida-green transition-colors">Musculação</a></li>
@@ -60,12 +60,12 @@ const Footer = () => {
               <li><a href="#" className="text-gray-400 hover:text-maisvida-green transition-colors">Personal Trainer</a></li>
               <li><a href="#" className="text-gray-400 hover:text-maisvida-green transition-colors">Aulas coletivas</a></li>
             </ul>
-          </div>
+          </div> */}
           
   
         </div>
         
-        <div className="mt-12 pt-8 border-t border-maisvida-green/10 text-center">
+        <div className="mt-12 text-start pt-8 border-t border-maisvida-green/10 ">
           <p className="text-gray-400">
             &copy; {new Date().getFullYear()} Mais Vida Academia. Todos os direitos reservados.
           </p>
