@@ -210,13 +210,13 @@ const type = annual? "fidelidade" : "mensal"
               <p className="text-gray-400 text-sm mb-4">{plan.descricao}</p>
               <div className="mb-6">
                 <span className="text-4xl font-bold">
-                  {annual ? plan.class ==="default"? `R$${plan.precofidelidade}`: `${plan.precofidelidade}` : `R$${plan.preco}`}
+                  {annual ? plan.class ==="default"? `${plan.precofidelidade}`: `${plan.precofidelidade}` : `${plan.preco}`}
                 </span>
                 <span className="text-gray-400 ml-2">{annual ? plan.class ==="default"? "/ano" :"" : "/mês"}</span>
               </div>
 
               <button
-                className="w-full py-3 rounded-lg mb-6 flex items-center justify-center gap-2 transition-all duration-300 bg-gray-700 hover:bg-gray-600 text-white"
+                className="w-full py-3 rounded-lg mb-6 flex items-center justify-center gap-2 transition-all duration-300 bg-maisvida-green hover:bg-green-900 text-white"
               >
                 Assinar Agora <ArrowRight size={16} />
               </button>

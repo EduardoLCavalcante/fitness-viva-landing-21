@@ -59,7 +59,7 @@ const Navbar = () => {
       </li>
       <li>
         <button
-          onClick={() => scrollToSection("horarios")}
+          onClick={() => scrollToSection("contact")}
           className={`p-2 rounded-full transition-all ${activeSection === "horarios" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Horários"
         >

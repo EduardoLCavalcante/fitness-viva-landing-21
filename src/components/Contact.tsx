@@ -99,17 +99,19 @@ const Contact = () => {
             <div className="bg-white text-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6">Horário de Funcionamento</h3>
               <div className="space-y-3 ">
-                <div className="flex justify-between">
-                  <span className="font-semibold">Segunda - Sexta:</span>
-                  <span className="text-gray-600">6:00 - 22:00</span>
+                <div className="flex justify-center">
+                  <ul className="text-center">
+                  <span className="font-semibold text-center">Segunda - Sexta:</span>
+                  <li className="text-gray-800">5:00 - 10:00</li>
+                  <li className="text-gray-800">12:00 - 13:00</li>
+                  <li className="text-gray-800">15:00 - 21:00</li>
+                  </ul>
                 </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold">Sábado:</span>
-                  <span className="text-gray-600">8:00 - 18:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold">Domingo:</span>
-                  <span className="text-gray-600">8:00 - 14:00</span>
+                <div className="flex justify-center">
+                  <ul className="text-center">
+                    <span className="font-semibold ">Sábado:</span>
+                    <li className="text-gray-600">6:00 - 10:00</li>
+                  </ul>
                 </div>
               </div>
             </div>

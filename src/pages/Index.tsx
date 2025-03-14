@@ -39,9 +39,10 @@ const Index = () => {
     <div className="min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
       <div className="bg-gradient-to-b from-black via-maisvida-dark to-black">
+      
         <Hero />
         <About />
-        <GallerySection />
+        {/* <GallerySection /> */}
         <Plans />
         <CalendarSection />
         <AppSection />

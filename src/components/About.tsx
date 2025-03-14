@@ -58,7 +58,8 @@ const About = () => {
         {/* Novas seções: Novas Turmas e Novos Equipamentos */}
         <div className="mt-20">
           <h3 className="text-3xl font-bold text-center mb-12">
-            <span className="text-maisvida-green">NOVIDADES</span> DA MAIS VIDA
+            SEMPRE TRAZENDO 
+            <span className="text-maisvida-green"> NOVIDADES</span> 
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -77,11 +78,11 @@ const About = () => {
                     <Clock className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">CrossTraining Matinal</h5>
-                    <p className="text-gray-400 mt-1">Nova turma às 6h da manhã para quem precisa treinar antes do trabalho.</p>
+                    <h5 className="font-semibold text-lg text-maisvida-green">TURMA DE MEIO DIA</h5>
+                    <p className="text-gray-400 mt-1">Nova turma das 12:00 ás 13:00.</p>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Seg/Qua/Sex</span>
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">6h - 7h</span>
+                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Seg/Ter/Qua/Quint/Sex</span>
+                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">12h - 13h</span>
                     </div>
                   </div>
                 </div>
@@ -91,28 +92,16 @@ const About = () => {
                     <Target className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">HIIT Intensivo</h5>
-                    <p className="text-gray-400 mt-1">Treino intervalado de alta intensidade para queima de gordura acelerada.</p>
+                    <h5 className="font-semibold text-lg text-maisvida-green">NOVA TURMA AO SÁBADO</h5>
+                    <p className="text-gray-400 mt-1">Nova turma ao sábado de manhã</p>
                     <div className="flex items-center gap-2 mt-2">
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Ter/Qui</span>
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">19h - 20h</span>
+                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Sáb</span>
+                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">6h - 10h</span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
-                    <Users className="h-6 w-6 text-maisvida-green" />
-                  </div>
-                  <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">Iniciantes Master</h5>
-                    <p className="text-gray-400 mt-1">Turma especial para pessoas acima de 50 anos que estão começando na musculação.</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Seg/Qua/Sex</span>
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">14h - 15h</span>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
             
@@ -128,37 +117,15 @@ const About = () => {
               <div className="p-6 space-y-4">
                 <div className="flex items-center gap-6 p-4 bg-black/30 rounded-lg">
                   <div className="w-16 h-16 bg-gray-800 rounded-lg flex-shrink-0 flex items-center justify-center">
-                    {/* Placeholder for equipment image */}
-                    <Dumbbell className="h-8 w-8 text-maisvida-green" />
+                    {/* Placeholder for equipment image*/}
+                    <Dumbbell className="h-8 w-8 text-maisvida-green" /> 
                   </div>
                   <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">Esteira Profissional Elite X9</h5>
-                    <p className="text-gray-400 mt-1">Nova linha de esteiras com monitor integrado, conexão Bluetooth e inclinação automática.</p>
+                    {/* <h5 className="font-semibold text-lg text-maisvida-green">Esteira Profissional Elite X9</h5> */}
+                    <p className="text-maisvida-green mt-1">Estamos sempre inovando, buscando trazer os melhores equipamentos para melhor performance nos treinos.</p>
                   </div>
                 </div>
-                
-                <div className="flex items-center gap-6 p-4 bg-black/30 rounded-lg">
-                  <div className="w-16 h-16 bg-gray-800 rounded-lg flex-shrink-0 flex items-center justify-center">
-                    {/* Placeholder for equipment image */}
-                    <Dumbbell className="h-8 w-8 text-maisvida-green" />
-                  </div>
-                  <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">Rack de Agachamento Pro</h5>
-                    <p className="text-gray-400 mt-1">Estrutura reforçada com ajuste de altura preciso e suportes de segurança integrados.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-6 p-4 bg-black/30 rounded-lg">
-                  <div className="w-16 h-16 bg-gray-800 rounded-lg flex-shrink-0 flex items-center justify-center">
-                    {/* Placeholder for equipment image */}
-                    <Dumbbell className="h-8 w-8 text-maisvida-green" />
-                  </div>
-                  <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">Sistema de Cabos Multifuncional</h5>
-                    <p className="text-gray-400 mt-1">Novo sistema com 15 posições de ajuste para uma maior variedade de exercícios.</p>
-                  </div>
-                </div>
-              </div>
+               </div> 
             </div>
           </div>
         </div>
