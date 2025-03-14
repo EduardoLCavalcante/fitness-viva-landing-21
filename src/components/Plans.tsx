@@ -3,9 +3,16 @@ import { ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion"
 const Plans = () => {
+
+  const [annual, setAnnual] = useState(false)
+  const [formData, setFormData] = useState({
+  
+    message: "Olá, gostaria de obter o  "
+  });
+
   const planos = [
     {
-      nome: "Básico",
+      nome: "Plano Básico",
       type: "mensal",
       class: "default" ,
       preco: "R$ 90,00",
@@ -14,7 +21,7 @@ const Plans = () => {
       recursos: ["Acesso à musculação", "Horário comercial", "Avaliação física trimestral", "Acesso ao app básico"],
     },
     {
-      nome: "Anual",
+      nome: "Plano Anual",
       type: "fidelidade",
       class: "default" ,
       preco: "R$ 129,90",
@@ -31,7 +38,7 @@ const Plans = () => {
       ],
     },
     {
-      nome: "Semestral",
+      nome: "Plano Semestral",
       type: "fidelidade",
       class: "default" ,
       preco: "R$ 199,90",
@@ -47,7 +54,7 @@ const Plans = () => {
       ],
     },
     {
-      nome: "Trimestral",
+      nome: "Plano Trimestral",
       type: "fidelidade",
       class: "default" ,
       preco: "R$ 199,90",
@@ -142,13 +149,25 @@ const daysAndWeeks = [
     descricao: "Acesso à musculação durante a semana",
     preco: "R$ 30,00",
   },
-]
-const [annual, setAnnual] = useState(false)
+  ]
+
   
 const type = annual? "fidelidade" : "mensal"
 
  const pcView = "max-w-6xl "
 
+ const handleSubmit = (index) => {
+
+  // Filtra os planos novamente para obter o mesmo array usado no map
+  const filteredPlanos = planos.filter(plan => plan.type === type);
+
+  // Obtém o plano correspondente ao índice clicado
+  const selectedPlan = filteredPlanos[index];
+  const whatsappMessage = encodeURIComponent(formData.message);
+  window.location.href = `https://api.whatsapp.com/send?phone=5588992918463&text=${whatsappMessage}${selectedPlan.nome}`;
+
+  window.open("_blank");
+};
 
   return (
     <section id="plans" className="py-20 bg-black ">
@@ -221,8 +240,9 @@ const type = annual? "fidelidade" : "mensal"
                 </span>
                 <span className="text-gray-400 ml-2">{annual ? plan.class ==="default"? "/ano" :"" : "/mês"}</span>
               </div>
-
+            {/* {console.log(index)} */}
               <button
+                onClick={()=> handleSubmit(index)}
                 className="w-full py-3 rounded-lg mb-6 flex items-center justify-center gap-2 transition-all duration-300 bg-maisvida-green hover:bg-green-900 text-white"
               >
                 Assinar Agora <ArrowRight size={16} />
