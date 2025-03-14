@@ -151,7 +151,13 @@ const type = annual? "fidelidade" : "mensal"
 
 
   return (
-    <section id="plans" className="py-20 bg-black">
+    <section id="plans" className="py-20 bg-black ">
+
+<div className="absolute w-full h-full z-0">
+        <div className="absolute top-1/4 right-[20%] w-64 h-64 bg-maisvida-green rounded-full filter blur-[120px] opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-[20%] w-72 h-72 bg-maisvida-red rounded-full filter blur-[120px] opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}

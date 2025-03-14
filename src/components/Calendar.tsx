@@ -118,6 +118,10 @@ const CalendarSectionComponent = () => {
 
   return (
     <section id="calendar" className="py-16 md:py-24 bg-black">
+        <div className="absolute w-full h-full z-0">
+        <div className="absolute top-1/4 right-[20%] w-64 h-64 bg-maisvida-green rounded-full filter blur-[120px] opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-[20%] w-72 h-72 bg-maisvida-red rounded-full filter blur-[120px] opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
    <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">CALENDÁRIO <span className="text-maisvida-green">MAIS VIDA</span></h2>
