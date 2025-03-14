@@ -59,15 +59,6 @@ const Navbar = () => {
       </li>
       <li>
         <button
-          onClick={() => scrollToSection("contact")}
-          className={`p-2 rounded-full transition-all ${activeSection === "horarios" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
-          aria-label="Horários"
-        >
-          <Clock className={`${pcView} h-5 w-5`} />
-        </button>
-      </li>
-      <li>
-        <button
           onClick={() => scrollToSection("about")}
           className={`p-2 rounded-full transition-all ${activeSection === "novidades" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Novidades"
@@ -91,6 +82,15 @@ const Navbar = () => {
           aria-label="Calendário"
         >
           <CalendarDays className={`${pcView} h-5 w-5`} />
+        </button>
+      </li>
+      <li>
+        <button
+          onClick={() => scrollToSection("contact")}
+          className={`p-2 rounded-full transition-all ${activeSection === "horarios" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          aria-label="Horários"
+        >
+          <Clock className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
