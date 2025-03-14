@@ -42,7 +42,7 @@ const Index = () => {
       
         <Hero />
         <About />
-      
+        
         <Plans />
         <CalendarSection />
         <AppSection />
