@@ -28,18 +28,15 @@ const Footer = () => {
               Transformando vidas através da saúde e do bem-estar. Junte-se a nós nessa jornada!
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="bg-maisvida-green/10 hover:bg-maisvida-green/20 p-2 rounded-full transition-colors border border-maisvida-green/20">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-maisvida-green/10 hover:bg-maisvida-green/20 p-2 rounded-full transition-colors border border-maisvida-green/20">
+            
+              <a 
+              href="https://www.instagram.com/mais.vida_studio.de.musculacao/" 
+              target="_blank"
+              rel="noreferrer"
+              className="bg-maisvida-green/10 hover:bg-maisvida-green/20 p-2 rounded-full transition-colors border border-maisvida-green/20">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-maisvida-green/10 hover:bg-maisvida-green/20 p-2 rounded-full transition-colors border border-maisvida-green/20">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="bg-maisvida-green/10 hover:bg-maisvida-green/20 p-2 rounded-full transition-colors border border-maisvida-green/20">
-                <Youtube className="h-5 w-5" />
-              </a>
+              
             </div>
           </div>
           
