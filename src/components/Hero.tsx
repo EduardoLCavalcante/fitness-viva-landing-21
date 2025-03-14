@@ -23,7 +23,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-maisvida-dark to-black z-0"></div>
       
       {/* Decorative patterns */}
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/297c7f25-31fc-4cbb-93a9-ca3a77819f69.png')] bg-center bg-no-repeat bg-contain opacity-[0.03] z-0"></div>
+      <div className="absolute inset-0 bg-[url('maisvida-logo.jpeg')] bg-center bg-no-repeat bg-contain opacity-[0.03] z-0"></div>
       
       {/* Dynamic elements */}
       <div className="absolute w-full h-full z-0">
@@ -43,13 +43,13 @@ const Hero = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight leading-tight">
-              <span className="text-white">Transforme seu</span>
+              <span className="text-white">Qualidade de vida, saúde e</span>
               <br />
               <div className="relative inline-flex">
-                <span className="bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">corpo</span>
+                <span className="bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">LOGENVIDADE</span>
                 <span className="ml-4 relative">
                   <img 
-                    src="/lovable-uploads/297c7f25-31fc-4cbb-93a9-ca3a77819f69.png" 
+                    src="maisvida-logo.jpeg" 
                     alt="+ Vida Logo" 
                     className="w-16 h-16 md:w-24 md:h-24 absolute -top-2 -right-20 md:-right-28 animate-pulse"
                   />
@@ -58,14 +58,14 @@ const Hero = () => {
             </h1>
             
             <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-lg font-light">
-              Ambiente exclusivo com equipamentos de última geração e profissionais experientes para cuidar da sua saúde e bem-estar.
+            ambiente inclusivo e acolhedor, equipamentos novos e ótima biomecânica, profissionais capacitados e qualificados para ajudar você nessa missão.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
               <a 
               target="_blank"
               rel="noreferrer"
-              href="https://api.whatsapp.com/send?phone=5588992918463&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20academia.">
+              href="https://api.whatsapp.com/send?phone=5588992918463&text=Olá, gostaria de mais informações sobre as vagas disponíveis.">
               <Button className="bg-gradient-to-r from-maisvida-green to-emerald-500 hover:from-emerald-500 hover:to-maisvida-green text-white font-bold px-8 py-6 rounded-lg text-lg shadow-lg shadow-maisvida-green/20 transition-all duration-300">
                 <HeartPulse className="mr-2" /> Começar Agora
               </Button>
@@ -81,7 +81,7 @@ const Hero = () => {
                   <Dumbbell className="text-maisvida-green h-6 w-6" />
                 </div>
                 <div className="text-left">
-                  <p className="text-white font-bold">100+</p>
+                  <p className="text-white font-bold">20+</p>
                   <p className="text-white/70 text-sm">Equipamentos</p>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const Hero = () => {
                   <HeartPulse className="text-maisvida-red h-6 w-6" />
                 </div>
                 <div className="text-left">
-                  <p className="text-white font-bold">15+</p>
+                  <p className="text-white font-bold">Exelentes</p>
                   <p className="text-white/70 text-sm">Profissionais</p>
                 </div>
               </div>
@@ -114,10 +114,10 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-maisvida-green/20 to-maisvida-red/20 rounded-full blur-3xl"></div>
               
               <div className="relative z-10 flex flex-col items-center">
-                <div className="p-2 rounded-full bg-gradient-to-br from-black via-black to-maisvida-dark border-2 border-white/5 shadow-2xl">
-                  <div className="p-8 rounded-full bg-gradient-to-br from-maisvida-green/20 to-maisvida-red/20 backdrop-blur-lg">
+                <div className="p-2 rounded-full  bg-gradient-to-br from-black via-black to-maisvida-dark border-2 border-white/5 shadow-2xl">
+                  <div className="p-1 rounded-full bg-gradient-to-br from-maisvida-green/20 to-maisvida-red/20 backdrop-blur-lg">
                     <img 
-                      src="/lovable-uploads/297c7f25-31fc-4cbb-93a9-ca3a77819f69.png" 
+                      src="maisvida-logo.jpeg" 
                       alt="+ Vida Studio" 
                       className="w-64 h-64 object-contain drop-shadow-2xl"
                     />
@@ -139,12 +139,12 @@ const Hero = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center">
           <button 
             onClick={scrollToAbout}
             className="group flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity"
           >
-            <span className="text-white/60 text-sm mb-2 group-hover:text-white transition-colors">Descubra Mais</span>
+            <span className="text-white/60 text-sm mb-2  group-hover:text-white transition-colors">Descubra Mais</span>
             <div className="w-8 h-8 rounded-full flex items-center justify-center bg-maisvida-green/10 backdrop-blur-sm border border-maisvida-green/20 group-hover:bg-maisvida-green/20 transition-colors">
               <ChevronDown className="text-white h-4 w-4 animate-bounce" />
             </div>

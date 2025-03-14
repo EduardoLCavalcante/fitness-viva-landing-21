@@ -14,7 +14,7 @@ const About = () => {
           <h2 className="text-4xl font-bold mb-4">SOBRE A <span className="text-maisvida-green">MAIS VIDA</span></h2>
           <div className="w-24 h-1 bg-maisvida-red mb-6 mx-auto"></div>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            Fundada com a missão de proporcionar mais qualidade de vida através da musculação, a Mais Vida se destaca por oferecer um ambiente exclusivo e personalizado.
+          A MAIS VIDA foi fundada em 2015 com a missão de proporcionar a prática regular do exercício físico em um ambiente inclusivo e acolhedor, trazendo experiências positivas e motivando as pessoas principalmente de idades avançadas e níveis baixo condicionamento físico. Há 10 anos oferecemos um trabalho ético e seguro, nossa equipe de profissionais altamente qualificados está comprometida em ajudar você a alcançar seus objetivos na melhora da qualidade de vida, saúde e longevidade.
           </p>
         </div>
         
