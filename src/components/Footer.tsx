@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white border-t border-maisvida-green/10">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="relative">
@@ -62,22 +62,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-bold mb-6 text-white">Horário</h3>
-            <ul className="space-y-3">
-              <li className="flex justify-between">
-                <span className="text-gray-400">Segunda - Sexta:</span>
-                <span className="text-maisvida-green">05:00 - 10:00</span>
-                <span className="text-maisvida-green">12:00 - 13:00</span>
-                <span className="text-maisvida-green">15:00 - 21:00</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="text-gray-400">Sábado:</span>
-                <span className="text-maisvida-green">6:00 - 10:00</span>
-              </li>
-              
-            </ul>
-          </div>
+  
         </div>
         
         <div className="mt-12 pt-8 border-t border-maisvida-green/10 text-center">
