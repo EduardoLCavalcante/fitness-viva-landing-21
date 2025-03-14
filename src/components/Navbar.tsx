@@ -4,8 +4,6 @@ import { Dumbbell, Clock, Plus, Activity, CalendarDays, Phone } from 'lucide-rea
 
 
 const Navbar = () => {
-
-
   const [isLoaded, setIsLoaded] = useState(false)
   const [activeSection, setActiveSection] = useState("")
   const heroRef = useRef(null)
@@ -29,6 +27,8 @@ const Navbar = () => {
     }
 
     window.addEventListener("scroll", handleScroll)
+    // Trigger scroll handler on initial load
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
   
@@ -51,7 +51,7 @@ const Navbar = () => {
       <li>
         <button
           onClick={() => scrollToSection("home")}
-          className={`p-2 rounded-full transition-all ${activeSection === "sobre" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          className={`p-2 rounded-full transition-all ${activeSection === "home" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Sobre"
         >
           <Dumbbell className={`${pcView} h-5 w-5`} />
@@ -60,7 +60,7 @@ const Navbar = () => {
       <li>
         <button
           onClick={() => scrollToSection("about")}
-          className={`p-2 rounded-full transition-all ${activeSection === "novidades" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          className={`p-2 rounded-full transition-all ${activeSection === "about" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Novidades"
         >
           <Plus className={`${pcView} h-5 w-5`} />
@@ -69,7 +69,7 @@ const Navbar = () => {
       <li>
         <button
           onClick={() => scrollToSection("plans")}
-          className={`p-2 rounded-full transition-all ${activeSection === "planos" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          className={`p-2 rounded-full transition-all ${activeSection === "plans" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Planos"
         >
           <Activity className={`${pcView} h-5 w-5`} />
@@ -78,7 +78,7 @@ const Navbar = () => {
       <li>
         <button
           onClick={() => scrollToSection("calendar")}
-          className={`p-2 rounded-full transition-all ${activeSection === "calendario" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          className={`p-2 rounded-full transition-all ${activeSection === "calendar" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Calendário"
         >
           <CalendarDays className={`${pcView} h-5 w-5`} />
@@ -87,19 +87,10 @@ const Navbar = () => {
       <li>
         <button
           onClick={() => scrollToSection("contact")}
-          className={`p-2 rounded-full transition-all ${activeSection === "horarios" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          className={`p-2 rounded-full transition-all ${activeSection === "contact" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Horários"
         >
           <Clock className={`${pcView} h-5 w-5`} />
-        </button>
-      </li>
-      <li>
-        <button
-          onClick={() => scrollToSection("contact")}
-          className={`p-2 rounded-full transition-all ${activeSection === "contato" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
-          aria-label="Contato"
-        >
-          <Phone className={`${pcView} h-5 w-5`} />
         </button>
       </li>
     </ul>

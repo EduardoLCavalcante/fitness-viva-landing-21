@@ -180,7 +180,7 @@ const type = annual? "fidelidade" : "mensal"
           <span className={`mr-3 ${annual ? "text-gray-400" : "text-white font-medium"}`}>Mensal</span>
           <button
             onClick={() => setAnnual(!annual)}
-            className="relative inline-flex h-6 w-12 items-center rounded-full bg-gray-800 transition-colors focus:outline-none"
+            className={`relative inline-flex h-6 w-12 items-center rounded-full ${annual ? "bg-maisvida-green" : "bg-gray-800"} transition-colors focus:outline-none`}
           >
             <span
               className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
