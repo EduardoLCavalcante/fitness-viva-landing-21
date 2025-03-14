@@ -41,6 +41,7 @@ const Index = () => {
       <div className="bg-gradient-to-b from-black via-maisvida-dark to-black">
       
         <Hero />
+        
         <About />
         
         <Plans />

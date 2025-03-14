@@ -7,8 +7,18 @@ const Hero = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden animate-pulse-slow">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden ">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-maisvida-dark to-black z-0"></div>
       
@@ -28,7 +38,7 @@ const Hero = () => {
             <div className="mb-8 flex justify-center lg:justify-start">
               <div className="flex items-center gap-3 py-2 px-4 bg-maisvida-green/10 backdrop-blur-sm rounded-full border border-maisvida-green/20">
                 <span className="w-2 h-2 bg-maisvida-green rounded-full animate-pulse"></span>
-                <span className="text-white/90 text-sm font-medium tracking-wide">Academia Premium</span>
+                <span className="text-white/90 text-sm font-medium tracking-wide">Studio Fitness</span>
               </div>
             </div>
             
@@ -52,10 +62,15 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+              <a 
+              target="_blank"
+              rel="noreferrer"
+              href="https://api.whatsapp.com/send?phone=5588992918463&text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20academia.">
               <Button className="bg-gradient-to-r from-maisvida-green to-emerald-500 hover:from-emerald-500 hover:to-maisvida-green text-white font-bold px-8 py-6 rounded-lg text-lg shadow-lg shadow-maisvida-green/20 transition-all duration-300">
                 <HeartPulse className="mr-2" /> Começar Agora
               </Button>
-              <Button variant="outline" className="border-maisvida-green/20 bg-black/40 backdrop-blur-sm text-white hover:bg-maisvida-green/10 px-8 py-6 rounded-lg text-lg transition-all duration-300">
+              </a>
+              <Button variant="outline" onClick={()=> scrollToSection("plans")} className="border-maisvida-green/20 bg-black/40 backdrop-blur-sm text-white hover:bg-maisvida-green/10 px-8 py-6 rounded-lg text-lg transition-all duration-300">
                 <Trophy className="mr-2" /> Ver Planos
               </Button>
             </div>
@@ -116,10 +131,7 @@ const Hero = () => {
                   <h2 className="text-4xl font-bold bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">
                     MUSCULAÇÃO
                   </h2>
-                  <div className="mt-4 px-6 py-2 bg-maisvida-green/10 backdrop-blur-sm rounded-full border border-maisvida-green/20 inline-flex items-center gap-2">
-                    <span className="w-2 h-2 bg-maisvida-green rounded-full animate-pulse"></span>
-                    <span className="text-white/90 text-sm font-medium">Aberto 24 horas</span>
-                  </div>
+                  
                 </div>
               </div>
             </div>
