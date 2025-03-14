@@ -57,7 +57,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white p-8 rounded-lg shadow-lg mb-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-maisvida-dark p-8 rounded-lg shadow-lg mb-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6">Informações de Contato</h3>
               
               <div className="space-y-6">
@@ -66,9 +66,9 @@ const Contact = () => {
                     <MapPin className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-700">Localização</h4>
-                    <p className="text-gray-600">Av. Principal, 1000 - Centro</p>
-                    <p className="text-gray-600">São Paulo, SP - Brasil</p>
+                    <h4 className="font-semibold ">Localização</h4>
+                    <p className="text-gray-200">Av. Principal, 1000 - Centro</p>
+                    <p className="text-gray-200">São Paulo, SP - Brasil</p>
                   </div>
                 </div>
                 
@@ -77,40 +77,31 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-700">Telefone</h4>
-                    <p className="text-gray-600">+55 (11) 99999-9999</p>
-                    <p className="text-gray-600">+55 (11) 3333-3333</p>
+                    <h4 className="font-semibold ">Telefone</h4>
+                    <p className="text-gray-200">+55 (11) 99999-9999</p>
+                   
                   </div>
                 </div>
                 
-                <div className="flex items-start group">
-                  <div className="bg-maisvida-green/10 p-3 rounded-full mr-4 group-hover:bg-maisvida-green/20 transition-all duration-300">
-                    <Mail className="h-6 w-6 text-maisvida-green" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-700">Email</h4>
-                    <p className="text-gray-600">contato@maisvida.com.br</p>
-                    <p className="text-gray-600">suporte@maisvida.com.br</p>
-                  </div>
-                </div>
+              
               </div>
             </div>
             
-            <div className="bg-white text-gray-700 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-maisvida-dark  p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6">Horário de Funcionamento</h3>
               <div className="space-y-3 ">
                 <div className="flex justify-center">
                   <ul className="text-center">
                   <span className="font-semibold text-center">Segunda - Sexta:</span>
-                  <li className="text-gray-800">5:00 - 10:00</li>
-                  <li className="text-gray-800">12:00 - 13:00</li>
-                  <li className="text-gray-800">15:00 - 21:00</li>
+                  <li className="text-gray-200">5:00 - 10:00</li>
+                  <li className="text-gray-200">12:00 - 13:00</li>
+                  <li className="text-gray-200">15:00 - 21:00</li>
                   </ul>
                 </div>
                 <div className="flex justify-center">
                   <ul className="text-center">
                     <span className="font-semibold ">Sábado:</span>
-                    <li className="text-gray-600">6:00 - 10:00</li>
+                    <li className="text-gray-200">6:00 - 10:00</li>
                   </ul>
                 </div>
               </div>
@@ -118,11 +109,11 @@ const Contact = () => {
           </div>
           
           <div className="lg:col-span-2 grid grid-cols-1 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <h3 className="text-2xl font-bold mb-6 text-gray-700">Envie uma Mensagem</h3>
+            <div className="bg-maisvida-dark p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <h3 className="text-2xl font-bold mb-6 ">Envie uma Mensagem</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1">
                     Nome completo
                   </label>
                   <Input
@@ -138,7 +129,7 @@ const Contact = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium  mb-1">
                       Email
                     </label>
                     <Input
@@ -154,7 +145,7 @@ const Contact = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="phone" className="block text-sm font-medium  mb-1">
                       Telefone
                     </label>
                     <Input
@@ -163,7 +154,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="(00) 00000-0000"
-                      className="w-full transition-all duration-300 focus:ring-maisvida-green"
+                      className="w-full  transition-all duration-300 focus:ring-maisvida-green/5 focus:ring-0 focus:"
                     />
                   </div>
                 </div>
