@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
-import { Dumbbell, Clock, Plus, Activity, CalendarDays, Phone } from 'lucide-react';
+import { Dumbbell, Activity, CalendarDays, Smartphone, Phone, Info } from 'lucide-react';
 
 
 const Navbar = () => {
@@ -63,7 +63,7 @@ const Navbar = () => {
           className={`p-2 rounded-full transition-all ${activeSection === "about" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Novidades"
         >
-          <Plus className={`${pcView} h-5 w-5`} />
+          <Info className={`${pcView} h-5 w-5`} />
         </button>
       </li>
       <li>
@@ -83,14 +83,25 @@ const Navbar = () => {
         >
           <CalendarDays className={`${pcView} h-5 w-5`} />
         </button>
+        
       </li>
+      <li>
+        <button
+          onClick={() => scrollToSection("app")}
+          className={`p-2 rounded-full transition-all ${activeSection === "app" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          aria-label="Sobre"
+        >
+          <Smartphone className={`${pcView} h-5 w-5`} />
+        </button>
+      </li>
+      
       <li>
         <button
           onClick={() => scrollToSection("contact")}
           className={`p-2 rounded-full transition-all ${activeSection === "contact" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Horários"
         >
-          <Clock className={`${pcView} h-5 w-5`} />
+          <Phone className={`${pcView} h-5 w-5`} />
         </button>
       </li>
     </ul>
