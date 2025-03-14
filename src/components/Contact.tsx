@@ -10,9 +10,7 @@ import LocationMap from "./LocationMap";
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
+ 
     message: ""
   });
 
@@ -32,13 +30,18 @@ const Contact = () => {
       description: "Entraremos em contato em breve.",
     });
     setFormData({
-      name: "",
-      email: "",
-      phone: "",
+    
       message: ""
     });
+
+    const whatsappMessage = encodeURIComponent(formData.message);
+    window.location.href = `https://api.whatsapp.com/send?phone=5588992918463&text=${whatsappMessage}`;
+
+    window.open("_blank");
   };
 
+
+    console.log(formData.message)
   return (
     <section id="contact" className="py-20 bg-black relative overflow-hidden">
       {/* Patrones decorativos */}
@@ -112,53 +115,9 @@ const Contact = () => {
             <div className="bg-maisvida-dark p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6 ">Envie uma Mensagem</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1">
-                    Nome completo
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Seu nome"
-                    required
-                    className="w-full transition-all duration-300 focus:ring-maisvida-green"
-                  />
-                </div>
+   
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium  mb-1">
-                      Email
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="seu@email.com"
-                      required
-                      className="w-full transition-all duration-300 focus:ring-maisvida-green"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium  mb-1">
-                      Telefone
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="(00) 00000-0000"
-                      className="w-full  transition-all duration-300 focus:ring-maisvida-green/5 focus:ring-0 focus:"
-                    />
-                  </div>
-                </div>
-                
+       
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Mensagem
@@ -171,7 +130,7 @@ const Contact = () => {
                     placeholder="Digite sua mensagem aqui..."
                     rows={4}
                     required
-                    className="w-full transition-all duration-300 focus:ring-maisvida-green"
+                    className="w-full h-[200px] transition-all duration-300 focus:ring-maisvida-green"
                   />
                 </div>
                 
