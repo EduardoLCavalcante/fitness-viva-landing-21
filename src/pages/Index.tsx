@@ -38,7 +38,7 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-hidden bg-black text-white animate-pulse-slow">
       <Navbar />
-      <div className="bg-gradient-to-b from-black via-maisvida-dark to-black">
+      <div className="bg-gradient-to-b from-black via-maisvida-dark to-black animate-pulse-slow">
       
         <Hero />
         <About />
