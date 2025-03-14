@@ -16,8 +16,8 @@ const Contact = () => {
     message: ""
   });
 
-  // Coordenadas para São Paulo (puedes cambiar estas coordenadas a la ubicación exacta de tu gimnasio)
-  const gymLocation: [number, number] = [-23.550520, -46.633308];
+  // Coordenadas para MAIS VIDA Studio de Musculação em Russas, Ceará, Brasil
+  const gymLocation: [number, number] = [-5.1538788, -38.0926763];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -67,8 +67,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold ">Localização</h4>
-                    <p className="text-gray-200">Av. Principal, 1000 - Centro</p>
-                    <p className="text-gray-200">São Paulo, SP - Brasil</p>
+                    <p className="text-gray-200">Rua Padre Raul Vieira, 854 - Centro</p>
+                    <p className="text-gray-200">Russas, Ceará - Brasil</p>
                   </div>
                 </div>
                 
@@ -78,7 +78,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold ">Telefone</h4>
-                    <p className="text-gray-200">+55 (11) 99999-9999</p>
+                    <p className="text-gray-200">+55 (88) 99846-1379</p>
                    
                   </div>
                 </div>

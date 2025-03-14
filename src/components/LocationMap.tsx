@@ -20,7 +20,7 @@ interface LocationMapProps {
 const LocationMap: React.FC<LocationMapProps> = ({ 
   position, 
   zoom = 15, 
-  popupText = "Mais Vida - Studio de Musculação" 
+  popupText = "Rua Padre Raul Vieira, 854 - Centro, Russas-CE" 
 }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   
