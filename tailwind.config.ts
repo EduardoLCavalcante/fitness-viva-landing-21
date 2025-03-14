@@ -105,6 +105,10 @@ export default {
 				'glow': {
 					'0%, 100%': { opacity: 0.5 },
 					'50%': { opacity: 1 },
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: 1 },
+					'50%': { opacity: 0.85 },
 				}
 			},
 			animation: {
@@ -113,6 +117,7 @@ export default {
 				'heartbeat': 'heartbeat 2s ease-in-out infinite',
 				'pulse-line': 'pulse-line 3s ease-in-out infinite',
 				'glow': 'glow 2s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'gym-pattern': "url('/public/gym-pattern.png')",
