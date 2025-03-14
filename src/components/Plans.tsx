@@ -175,6 +175,7 @@ const type = annual? "fidelidade" : "mensal"
           transformação hoje mesmo.
         </p>
 
+         
         <div className="flex items-center justify-center mb-8">
           <span className={`mr-3 ${annual ? "text-gray-400" : "text-white font-medium"}`}>Mensal</span>
           <button
@@ -187,7 +188,7 @@ const type = annual? "fidelidade" : "mensal"
               }`}
             />
           </button>
-          <span className={`ml-3 ${annual ? "text-white font-medium" : "text-gray-400"}`}>Anual</span>
+          <span className={`ml-3 ${annual ? "text-white font-medium" : "text-gray-400"}`}>Fidelidade</span>
           <span className="ml-2 inline-flex items-center rounded-full bg-green-500/20 px-2 py-1 text-xs font-medium text-green-500">
             Economize 20%
           </span>
