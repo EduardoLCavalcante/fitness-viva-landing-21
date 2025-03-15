@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -9,6 +8,7 @@ import CalendarSection from "@/components/Calendar";
 import GallerySection from "@/components/GallerySection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import DailyWeeklyRates from "@/components/DailyWeeklyRates";
 
 const Index = () => {
   // Enhanced animation effect for scroll reveal with staggered timing
@@ -39,15 +39,12 @@ const Index = () => {
     <div className="min-h-screen overflow-hidden bg-black text-white">
       <Navbar />
       <div className="bg-gradient-to-b from-black via-maisvida-dark to-black">
-      
         <Hero />
-        
         <About />
-        
         <Plans />
+        <DailyWeeklyRates />
         <CalendarSection />
         <AppSection />
-        
         <Contact />
       </div>
       <Footer />
