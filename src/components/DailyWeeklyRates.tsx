@@ -70,7 +70,7 @@ const DailyWeeklyRates = () => {
               <CardFooter>
                 <button 
                   onClick={() => handleWhatsApp("Diária")}
-                  className="w-full py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 bg-gray-800 hover:bg-maisvida-green text-white"
+                  className="w-full py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 bg-maisvida-green hover:bg-green-900 text-white"
                 >
                   Obter Agora <ArrowRight size={16} />
                 </button>
@@ -117,7 +117,7 @@ const DailyWeeklyRates = () => {
               <CardFooter>
                 <button 
                   onClick={() => handleWhatsApp("Semanal")}
-                  className="w-full py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 bg-gray-800 hover:bg-maisvida-green text-white"
+                  className="w-full py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 bg-maisvida-green hover:bg-green-900 text-white"
                 >
                   Obter Agora <ArrowRight size={16} />
                 </button>

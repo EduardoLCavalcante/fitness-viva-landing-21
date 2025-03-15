@@ -69,7 +69,7 @@ const Navbar = () => {
       <li>
         <button
           onClick={() => scrollToSection("plans")}
-          className={`p-2 rounded-full transition-all ${activeSection === "plans" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
+          className={`p-2 rounded-full transition-all ${activeSection === "plans" || activeSection === "daily-weekly" ? "bg-primary text-black" : "text-white hover:bg-primary/20"}`}
           aria-label="Planos"
         >
           <Activity className={`${pcView} h-5 w-5`} />
