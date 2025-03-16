@@ -70,7 +70,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold ">Localização</h4>
-                    <p className="text-gray-200">R. Joaquim Saraiva, 84 - Populares</p>
+                    <p className="text-gray-200">R. Joaquim Saraiva, 91 - Populares</p>
                     <p className="text-gray-200">Limoeiro do Norte, Ceará - Brasil</p>
                   </div>
                 </div>
