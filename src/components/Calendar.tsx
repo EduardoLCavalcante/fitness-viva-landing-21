@@ -13,7 +13,7 @@ import  { useState } from 'react'
     { data: "2025-03-08", tipo: "fechado", titulo: "Dia da Mulher", descricao: "Academia fechada" },
     { data: "2025-03-19", tipo: "fechado", titulo: "São José", descricao: "Academia fechada" },
     { data: "2025-04-10", tipo: "fechado", titulo: "Semana Santa", descricao: "Sexta e Sábado para Semana Santa" },
-    { data: "2025-04-12", tipo: "evento", titulo: "Resultados EBR", descricao: "Academia fechada" },
+    { data: "2025-04-12", tipo: "evento", titulo: "Resultados EBR", descricao: "Entrega de Resultados" },
     { data: "2025-04-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
     { data: "2025-04-21", tipo: "fechado", titulo: "Tiradentes", descricao: "Academia fechada" },
     { data: "2025-05-04", tipo: "fechado", titulo: "Dia do Trabalho", descricao: "Academia fechada" },
@@ -40,7 +40,7 @@ import  { useState } from 'react'
     { data: "2025-12-21", tipo: "evento", titulo: "Crossvida", descricao: "Evento especial de treinamento funcional" },
     { data: "2025-12-20", tipo: "confraternizacao", titulo: "Confraternização de Fim de Ano", descricao: "Encerramento das atividades do ano" },
     { data: "2025-12-25", tipo: "fechado", titulo: "Recesso (Natal e Réveillon)", descricao: "Academia fechada" },
-    { data: "2025-12-12", tipo: "evento", titulo: "Resultados EBR", descricao: "Academia fechada" },
+    { data: "2025-12-12", tipo: "evento", titulo: "Resultados EBR", descricao: "Entrega de Resultados" },
   ];
   
 
