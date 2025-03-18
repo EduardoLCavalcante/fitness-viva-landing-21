@@ -23,7 +23,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-maisvida-dark to-black z-0"></div>
       
       {/* Decorative patterns */}
-      <div className="absolute inset-0 bg-[url('maisvida-logo.jpeg')] bg-center bg-no-repeat bg-contain opacity-[0.03] z-0"></div>
+      <div className="absolute inset-0 bg-[url('/maisvida-logo.jpeg')] bg-center bg-no-repeat bg-contain opacity-[0.03] z-0"></div>
       
       {/* Dynamic elements */}
       <div className="absolute w-full h-full z-0">
@@ -32,7 +32,7 @@ const Hero = () => {
       </div>
       
       <div className="container mx-auto px-4 z-10 py-20">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col max-sm:flex-col-reverse lg:flex-row items-center justify-between gap-12">
           {/* Left section with text */}
           <div className="w-full lg:w-1/2 text-center lg:text-left animate-on-scroll">
             <div className="mb-8 flex justify-center lg:justify-start">
