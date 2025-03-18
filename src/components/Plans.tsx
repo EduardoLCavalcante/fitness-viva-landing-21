@@ -221,7 +221,7 @@ const type = annual? "fidelidade" : "mensal"
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative rounded-2xl overflow-hidden border ${
+              className={`relative rounded-2xl hover:border-maisvida-green/50 overflow-hidden border ${
                 plan.destaque ? "border-green-500" : "border-gray-700"
               } bg-gray-900/50 backdrop-blur-sm hover:transform hover:scale-105 transition-all duration-300`}
             >
