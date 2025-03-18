@@ -33,7 +33,7 @@ const AppSection = () => {
           <div className="w-full lg:w-1/2 lg:pr-16 mb-12 lg:mb-0">
             <h2 className="text-4xl font-bold text-maisvida-white mb-4">NOSSO <span className="text-maisvida-green">APLICATIVO</span></h2>
             <div className="w-24 h-1 bg-maisvida-red mb-6"></div>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-300 mb-8">
               O aplicativo Mais Vida foi desenvolvido para proporcionar uma experiência completa aos nossos alunos. Com ele, você tem acesso ao seu treino, agenda, avaliações e muito mais, tudo na palma da sua mão.
             </p>
             
@@ -45,7 +45,7 @@ const AppSection = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-gray-400">{feature.description}</p>
                   </div>
                 </div>
               ))}
