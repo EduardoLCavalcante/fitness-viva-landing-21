@@ -51,13 +51,35 @@ const AppSection = () => {
               ))}
             </div>
             
-            <div className="flex space-x-4">
-              <Button className="bg-black hover:bg-gray-800 text-white px-6 py-5">
-                <Smartphone className="mr-2 h-5 w-5" /> Download App
-              </Button>
-              <Button variant="outline" className="border-maisvida-green text-maisvida-green hover:bg-maisvida-green/10 px-6 py-5">
-                Saiba mais
-              </Button>
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <a 
+                href="https://apps.apple.com/br/app/sca-fit/id1555516617?platform=iphone" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button className="w-full bg-black hover:bg-gray-800 text-white border border-maisvida-green px-6 py-5">
+                  <Smartphone className="mr-2 h-5 w-5" /> Download iOS
+                </Button>
+              </a>
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.sistemasca.scafit&pcampaignid=web_share" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button className="w-full bg-black hover:bg-gray-800 text-white border border-maisvida-green px-6 py-5">
+                  <Smartphone className="mr-2 h-5 w-5" /> Download Android
+                </Button>
+              </a>
+              <a 
+                href="#contact" 
+                className="w-full sm:w-auto"
+              >
+                <Button variant="outline" className="w-full border-maisvida-green text-maisvida-green hover:bg-maisvida-green/10 px-6 py-5">
+                  Saiba mais
+                </Button>
+              </a>
             </div>
           </div>
           
@@ -82,10 +104,10 @@ const AppSection = () => {
                       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-6 bg-gray-800 rounded-b-3xl" />
                     </div>
                   </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );
