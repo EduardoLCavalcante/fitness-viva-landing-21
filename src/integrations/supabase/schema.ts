@@ -30,7 +30,7 @@ export type TemporaryRate = {
 
 export type SpecialDate = {
   id: number;
-  date: string;
+  month: string;
   type: string;
   title: string;
   description: string | null;

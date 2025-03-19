@@ -107,27 +107,27 @@ export type Database = {
       special_dates: {
         Row: {
           created_at: string
-          date: string
           description: string | null
           id: number
+          month: string
           title: string
           type: string
           updated_at: string
         }
         Insert: {
           created_at?: string
-          date: string
           description?: string | null
           id?: number
+          month: string
           title: string
           type: string
           updated_at?: string
         }
         Update: {
           created_at?: string
-          date?: string
           description?: string | null
           id?: number
+          month?: string
           title?: string
           type?: string
           updated_at?: string

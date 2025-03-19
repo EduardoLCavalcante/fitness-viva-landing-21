@@ -27,7 +27,7 @@ import { Pencil, Plus, Trash2, X, Check, Calendar } from "lucide-react";
 
 // Define the shape of the new date object to ensure required fields
 type NewSpecialDate = {
-  date: string;
+  month: string;
   type: string;
   title: string;
   description: string | null;
@@ -40,7 +40,7 @@ export const CalendarEditor = () => {
   const [editingDate, setEditingDate] = useState<SpecialDate | null>(null);
   const [isAddingNew, setIsAddingNew] = useState(false);
   const [newDate, setNewDate] = useState<NewSpecialDate>({
-    date: "",
+    month: "",
     type: "evento",
     title: "",
     description: null
@@ -53,7 +53,7 @@ export const CalendarEditor = () => {
       const { data, error } = await supabase
         .from('special_dates')
         .select('*')
-        .order('date');
+        .order('month');
       
       if (error) throw error;
       return data as SpecialDate[];
@@ -111,7 +111,7 @@ export const CalendarEditor = () => {
       });
       setIsAddingNew(false);
       setNewDate({
-        date: "",
+        month: "",
         type: "evento",
         title: "",
         description: null
@@ -159,10 +159,10 @@ export const CalendarEditor = () => {
   };
 
   const handleAddDate = () => {
-    if (!newDate.date || !newDate.title) {
+    if (!newDate.month || !newDate.title) {
       toast({
         title: "Campos incompletos",
-        description: "Por favor, preencha a data e o título.",
+        description: "Por favor, preencha o mês e o título.",
         variant: "destructive",
       });
       return;
@@ -191,6 +191,17 @@ export const CalendarEditor = () => {
     }
   };
 
+  // Helper to format month for display
+  const formatMonth = (monthString: string) => {
+    try {
+      const [year, month] = monthString.split('-');
+      const date = new Date(parseInt(year), parseInt(month) - 1);
+      return date.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+    } catch (e) {
+      return monthString;
+    }
+  };
+
   if (isLoading) {
     return <div className="text-center py-12">Carregando datas especiais...</div>;
   }
@@ -215,14 +226,14 @@ export const CalendarEditor = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label className="text-white">Data (YYYY-MM-DD)</Label>
+              <Label className="text-white">Mês (YYYY-MM)</Label>
               <Input 
-                value={newDate.date} 
-                onChange={(e) => setNewDate({...newDate, date: e.target.value})}
-                placeholder="2025-01-01"
+                value={newDate.month} 
+                onChange={(e) => setNewDate({...newDate, month: e.target.value})}
+                placeholder="2025-01"
                 className="bg-gray-800 border-gray-700 text-white"
               />
-              <p className="text-xs text-gray-400 mt-1">Formato: YYYY-MM-DD (Ex: 2025-01-01)</p>
+              <p className="text-xs text-gray-400 mt-1">Formato: YYYY-MM (Ex: 2025-01 para Janeiro de 2025)</p>
             </div>
 
             <div>
@@ -318,10 +329,10 @@ export const CalendarEditor = () => {
                 {editingDate?.id === date.id ? (
                   <div className="space-y-4 pt-2">
                     <div>
-                      <Label className="text-white">Data (YYYY-MM-DD)</Label>
+                      <Label className="text-white">Mês (YYYY-MM)</Label>
                       <Input 
-                        value={editingDate.date} 
-                        onChange={(e) => setEditingDate({...editingDate, date: e.target.value})}
+                        value={editingDate.month} 
+                        onChange={(e) => setEditingDate({...editingDate, month: e.target.value})}
                         className="bg-gray-800 border-gray-700 text-white"
                       />
                     </div>
@@ -355,7 +366,7 @@ export const CalendarEditor = () => {
                 ) : (
                   <div className="flex items-center gap-2 py-1">
                     <Calendar size={14} className="text-gray-500" />
-                    <span>{date.date}</span>
+                    <span>{formatMonth(date.month)}</span>
                     <span className="px-2 py-0.5 rounded-full text-xs" 
                       style={{
                         backgroundColor: 

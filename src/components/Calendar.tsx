@@ -10,13 +10,13 @@ const CalendarSectionComponent = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date())
 
   // Fetch special dates from Supabase
-  const { data: diasEspeciais, isLoading } = useQuery({
+  const { data: eventosEspeciais, isLoading } = useQuery({
     queryKey: ['special_dates-public'],
     queryFn: async () => {
       const { data, error } = await supabase
         .from('special_dates')
         .select('*')
-        .order('date');
+        .order('month');
       
       if (error) throw error;
       return data as SpecialDate[];
@@ -35,31 +35,23 @@ const CalendarSectionComponent = () => {
     return data.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })
   }
 
-  const getEventosDoMes = () => {
-    if (!diasEspeciais) return [];
-    
-    const mes = currentMonth.getMonth() + 1;
-    const ano = currentMonth.getFullYear();
+  // Get the current month in YYYY-MM format
+  const getCurrentMonthString = () => {
+    const year = currentMonth.getFullYear();
+    const month = (currentMonth.getMonth() + 1).toString().padStart(2, '0');
+    return `${year}-${month}`;
+  }
 
-    return diasEspeciais
-      .filter((evento) => {
-        // Parse the date from YYYY-MM-DD format
-        const parts = evento.date.split('-');
-        if (parts.length !== 3) return false;
-        
-        const dataEvento = new Date(
-          parseInt(parts[0]), // year
-          parseInt(parts[1]) - 1, // month (0-based)
-          parseInt(parts[2]) // day
-        );
-        
-        return dataEvento.getMonth() + 1 === mes && dataEvento.getFullYear() === ano;
-      })
+  const getEventosDoMes = () => {
+    if (!eventosEspeciais) return [];
+    
+    const mesAtual = getCurrentMonthString();
+    
+    return eventosEspeciais
+      .filter(evento => evento.month === mesAtual)
       .sort((a, b) => {
-        // Sort by date
-        const dateA = new Date(a.date).getTime();
-        const dateB = new Date(b.date).getTime();
-        return dateA - dateB;
+        // Sort by id or any other criteria if needed
+        return a.id - b.id;
       });
   }
 
