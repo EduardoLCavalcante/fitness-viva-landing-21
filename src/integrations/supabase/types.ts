@@ -9,7 +9,158 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      business_hours: {
+        Row: {
+          closing_time: string
+          created_at: string
+          day_of_week: string
+          id: number
+          opening_time: string
+          updated_at: string
+        }
+        Insert: {
+          closing_time: string
+          created_at?: string
+          day_of_week: string
+          id?: number
+          opening_time: string
+          updated_at?: string
+        }
+        Update: {
+          closing_time?: string
+          created_at?: string
+          day_of_week?: string
+          id?: number
+          opening_time?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      plan_features: {
+        Row: {
+          created_at: string
+          feature: string
+          id: number
+          plan_id: number | null
+        }
+        Insert: {
+          created_at?: string
+          feature: string
+          id?: number
+          plan_id?: number | null
+        }
+        Update: {
+          created_at?: string
+          feature?: string
+          id?: number
+          plan_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "plan_features_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plans: {
+        Row: {
+          class: string
+          created_at: string
+          description: string | null
+          highlighted: boolean | null
+          id: number
+          loyalty_price: string
+          name: string
+          price: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          class?: string
+          created_at?: string
+          description?: string | null
+          highlighted?: boolean | null
+          id?: number
+          loyalty_price: string
+          name: string
+          price: string
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          class?: string
+          created_at?: string
+          description?: string | null
+          highlighted?: boolean | null
+          id?: number
+          loyalty_price?: string
+          name?: string
+          price?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      special_dates: {
+        Row: {
+          created_at: string
+          date: string
+          description: string | null
+          id: number
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          description?: string | null
+          id?: number
+          title: string
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          description?: string | null
+          id?: number
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      temporary_rates: {
+        Row: {
+          created_at: string
+          description: string
+          id: number
+          name: string
+          price: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: number
+          name: string
+          price: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: number
+          name?: string
+          price?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

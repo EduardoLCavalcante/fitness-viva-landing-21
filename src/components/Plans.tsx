@@ -1,173 +1,78 @@
+
 import { ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Plan, PlanFeature } from "@/integrations/supabase/schema";
 
 const Plans = () => {
-
-  const [annual, setAnnual] = useState(false)
+  const [annual, setAnnual] = useState(false);
   const [formData, setFormData] = useState({
-  
     message: "Olá, gostaria de obter o  "
   });
 
-  const planos = [
-    {
-      nome: "Plano Básico",
-      type: "mensal",
-      class: "default" ,
-      preco: "R$ 90,00",
-      precofidelidade: "R$ 79,90",
-      descricao: "Ideal para iniciantes",
-      recursos: ["Acesso à musculação", "Horário comercial", "Avaliação física trimestral", "Acesso ao app básico"],
-    },
-    {
-      nome: "Plano Anual",
-      type: "fidelidade",
-      class: "default" ,
-      preco: "R$ 129,90",
-      precofidelidade: "R$ 75,00",
-      descricao: "Nosso plano mais popular.\nPAGAMENTO MENSAL." ,
-      destaque: true,
-      recursos: [
-        "Acesso à musculação",
-        
-        "Horário integral",
-        
-        "Acesso ao app completo",
-        
-      ],
-    },
-    {
-      nome: "Plano Semestral",
-      type: "fidelidade",
-      class: "default" ,
-      preco: "R$ 199,90",
-      precofidelidade: "R$ 80,00",
-      descricao: "PAGAMENTO MENSAL",
-      recursos: [
-        "Acesso à musculação",
-        
-        "Horário integral",
-        
-        "Acesso ao app completo",
-        
-      ],
-    },
-    {
-      nome: "Plano Trimestral",
-      type: "fidelidade",
-      class: "default" ,
-      preco: "R$ 199,90",
-      precofidelidade: "R$ 85,00",
-      descricao: "PAGAMENTO MENSAL",
-      recursos: [
-        "Acesso à musculação",
-        
-        "Horário integral",
-        
-        "Acesso ao app completo",
-        
-      ],
-    },
-    {
-      nome: "Plano Anual PREMIUM",
-      type: "fidelidade",
-      class: "premium" ,
-      preco: "R$ 199,90",
-      precofidelidade: "Escolha a opção",
-      descricao: "PAGAMENTO MENSAL",
-      recursos: [
-        "Acesso à musculação",
-        `Avaliação física a cada 3 meses - R$ 90,00`,	
-        "Horário integral",
-        "Mudança no treino a cada 3 meses - R$ 90,00",
-        "Acesso ao app completo",
-        "PC + Divulgação da marca na TV - R$ 120,00",
-        "EBR - Participação no projeto Em Busca do resultado - R$ 90,00",
-        "Nutricionista (1x por mês) + Prescrição de treino - R$ 150,00",
-      ],
-    },
-    {
-      nome: "Plano Semestral GOLD",
-      type: "fidelidade",
-      class: "gold" ,
-      preco: "R$ 199,90",
-      precofidelidade: "Escolha a opção",
-      descricao: "PAGAMENTO MENSAL",
-      recursos: [
-        "Acesso à musculação",
-        "Avaliação física a cada 2 meses - R$ 100,00",
-        "Horário integral",
-        "Mudança no treino a cada 2 meses - R$ 100,00",
-        "Acesso ao app completo",
-        "PC + Divulgação da marca na TV - R$ 125,00",
-        "EBR - Participação no projeto Em Busca do resultado - R$ 95,00",
-        "Nutricionista (1x por mês) + Prescrição de treino - R$ 155,00",
-      ],
-    },
-    {
-      nome: "Plano Trimestral SILVER",
-      type: "fidelidade",
-      class: "silver" ,
-      preco: "R$ 199,90",
-      precofidelidade: "Escolha a opção",
-      descricao: "PAGAMENTO MENSAL",
-      recursos: [
-        "Acesso à musculação",
-        "Avaliação física a cada mes - R$ 130,00",
-        "Horário integral",
-        "Mudança no treino a cada mes - R$ 130,00",
-        "Acesso ao app completo",
-        "PC + Divulgação da marca na TV - R$ 125,00",
-      ],
-    },
-  ]
+  // Fetch plans from Supabase
+  const { data: plans, isLoading: plansLoading } = useQuery({
+    queryKey: ['plans-public'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('plans')
+        .select('*')
+        .order('id');
+      
+      if (error) throw error;
+      return data as Plan[];
+    }
+  });
 
-const pacotes = [
-    {
-      nome: "Casal",
-      preco: "R$ 85,00",
-      descricao: "Plano Premium para duas pessoas",
-      desconto: "Economia de R$ 10,00",
-    },
-    {
-      nome: "Família",
-      preco: "R$ 85,00",
-      descricao: "Plano Premium para até 4 pessoas",
-      desconto: "Economia de R$ 20,00",
-    },
-  ]
+  // Fetch plan features from Supabase
+  const { data: features, isLoading: featuresLoading } = useQuery({
+    queryKey: ['plan_features-public'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('plan_features')
+        .select('*')
+        .order('id');
+      
+      if (error) throw error;
+      return data as PlanFeature[];
+    }
+  });
 
-const daysAndWeeks = [
-  {
-    nome: "Diária",
-    descricao: "Acesso à musculação por um dia",
-    preco: "R$ 15,00",
-  },
-  {
-    nome: "Semanal",
-    descricao: "Acesso à musculação durante a semana",
-    preco: "R$ 30,00",
-  },
-  ]
+  const type = annual ? "fidelidade" : "mensal";
 
-  
-const type = annual? "fidelidade" : "mensal"
+  const handleSubmit = (index: number) => {
+    // Filtra os planos novamente para obter o mesmo array usado no map
+    const filteredPlanos = plans?.filter(plan => plan.type === type) || [];
 
- const pcView = "max-w-6xl "
+    // Obtém o plano correspondente ao índice clicado
+    const selectedPlan = filteredPlanos[index];
+    if (!selectedPlan) return;
+    
+    const whatsappMessage = encodeURIComponent(formData.message);
+    window.location.href = `https://api.whatsapp.com/send?phone=5588992918463&text=${whatsappMessage}${selectedPlan.name}`;
+    window.open("_blank");
+  };
 
- const handleSubmit = (index) => {
-
-  // Filtra os planos novamente para obter o mesmo array usado no map
-  const filteredPlanos = planos.filter(plan => plan.type === type);
-
-  // Obtém o plano correspondente ao índice clicado
-  const selectedPlan = filteredPlanos[index];
-  const whatsappMessage = encodeURIComponent(formData.message);
-  window.location.href = `https://api.whatsapp.com/send?phone=5588992918463&text=${whatsappMessage}${selectedPlan.nome}`;
-
-  window.open("_blank");
-};
+  // Loading state
+  if (plansLoading || featuresLoading) {
+    return (
+      <section id="plans" className="py-20 bg-black">
+        <div className="container mx-auto px-4 text-center">
+          <div className="animate-pulse flex flex-col items-center">
+            <div className="h-8 bg-gray-700 rounded w-1/4 mb-8"></div>
+            <div className="h-4 bg-gray-700 rounded w-1/2 mb-12"></div>
+            <div className="grid md:grid-cols-3 gap-8 w-full">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="h-96 bg-gray-800 rounded-lg"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="plans" className="py-20 bg-black ">
@@ -214,63 +119,68 @@ const type = annual? "fidelidade" : "mensal"
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {planos.filter(planos => planos.type === type ).map((plan, index) => (
-            <motion.div
-              key={plan.nome}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`relative rounded-2xl hover:border-maisvida-green/50 overflow-hidden border ${
-                plan.destaque ? "border-green-500" : "border-gray-700"
-              } bg-gray-900/50 backdrop-blur-sm hover:transform hover:scale-105 transition-all duration-300`}
-            >
-              {plan.destaque && (
-                <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                  POPULAR
-                </div>
-              )}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-1">{plan.nome}</h3>
-                <p className="text-gray-400 text-sm mb-4">{plan.descricao}</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">
-                    {annual ? plan.class ==="default"? `${plan.precofidelidade}`: `${plan.precofidelidade}` : `${plan.preco}`}
-                  </span>
-                  <span className="text-gray-400 ml-2">{annual ? plan.class ==="default"? "/ano" :"" : "/mês"}</span>
-                </div>
-              {/* {console.log(index)} */}
-                <button
-                  onClick={()=> handleSubmit(index)}
-                  className="w-full py-3 rounded-lg mb-6 flex items-center justify-center gap-2 transition-all duration-300 bg-maisvida-green hover:bg-green-900 text-white"
+          {plans
+            ?.filter(plan => plan.type === type)
+            .map((plan, index) => {
+              const planFeatures = features?.filter(feature => feature.plan_id === plan.id) || [];
+              
+              return (
+                <motion.div
+                  key={plan.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`relative rounded-2xl hover:border-maisvida-green/50 overflow-hidden border ${
+                    plan.highlighted ? "border-green-500" : "border-gray-700"
+                  } bg-gray-900/50 backdrop-blur-sm hover:transform hover:scale-105 transition-all duration-300`}
                 >
-                  Assinar Agora <ArrowRight size={16} />
-                </button>
-
-                <div className="space-y-3">
-                  <p className="font-medium text-sm">Escolha uma opção :</p>
-                  {plan.recursos.map((feature) => (
-                    <div key={feature} className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span className="text-sm text-gray-300">{feature}</span>
+                  {plan.highlighted && (
+                    <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                      POPULAR
                     </div>
-                  ))}
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-1">{plan.name}</h3>
+                    <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
+                    <div className="mb-6">
+                      <span className="text-4xl font-bold">
+                        {annual ? 
+                          plan.class === "default" ? 
+                            `${plan.loyalty_price}` : 
+                            `${plan.loyalty_price}` : 
+                          `${plan.price}`
+                        }
+                      </span>
+                      <span className="text-gray-400 ml-2">
+                        {annual ? 
+                          plan.class === "default" ? 
+                            "/ano" : 
+                            "" : 
+                          "/mês"
+                        }
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => handleSubmit(index)}
+                      className="w-full py-3 rounded-lg mb-6 flex items-center justify-center gap-2 transition-all duration-300 bg-maisvida-green hover:bg-green-900 text-white"
+                    >
+                      Assinar Agora <ArrowRight size={16} />
+                    </button>
 
-                  {/* {plan.notIncluded.length > 0 && (
-                    <>
-                      <p className="font-medium text-sm mt-4">Não incluído:</p>
-                      {plan.notIncluded.map((feature) => (
-                        <div key={feature} className="flex items-start">
-                          <X className="h-5 w-5 text-gray-500 mr-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-400">{feature}</span>
+                    <div className="space-y-3">
+                      <p className="font-medium text-sm">Escolha uma opção:</p>
+                      {planFeatures.map((feature) => (
+                        <div key={feature.id} className="flex items-start">
+                          <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
+                          <span className="text-sm text-gray-300">{feature.feature}</span>
                         </div>
                       ))}
-                    </>
-                  )} */}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
         </div>
         
         {/* Payment notice */}
