@@ -1,6 +1,6 @@
 
 import { AlertCircle, Calendar, ChevronLeft, ChevronRight, PartyPopper } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { SpecialDate } from '@/integrations/supabase/schema';
@@ -8,6 +8,10 @@ import { SpecialDate } from '@/integrations/supabase/schema';
 const CalendarSectionComponent = () => {
   const [selectedEvent, setSelectedEvent] = useState<number | null>(null)
   const [currentMonth, setCurrentMonth] = useState(new Date())
+
+
+
+  
 
   // Fetch special dates from Supabase
   const { data: eventosEspeciais, isLoading } = useQuery({
@@ -104,29 +108,35 @@ const CalendarSectionComponent = () => {
     }
   }
 
+  
   const eventosDoMes = getEventosDoMes();
   const temEventos = eventosDoMes.length > 0;
 
-  // Loading state
-  if (isLoading) {
-    return (
-      <section id="calendar" className="py-16 md:py-24 bg-black">
-        <div className="container mx-auto px-4 text-center">
-          <div className="animate-pulse flex flex-col items-center">
-            <div className="h-8 bg-gray-700 rounded w-1/4 mb-8"></div>
-            <div className="h-4 bg-gray-700 rounded w-1/2 mb-12"></div>
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 w-full">
-              <div className="h-96 bg-gray-800 rounded-lg"></div>
-              <div className="space-y-4">
-                <div className="h-40 bg-gray-800 rounded-lg"></div>
-                <div className="h-40 bg-gray-800 rounded-lg"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  
+
+  // // Loading state
+  // if (isLoading) {
+  //   return (
+  //     <section id="calendar" className="py-16 md:py-24 bg-black">
+  //       <div className="container mx-auto px-4 text-center">
+  //         <div className="animate-pulse flex flex-col items-center">
+  //           <div className="h-8 bg-gray-700 rounded w-1/4 mb-8"></div>
+  //           <div className="h-4 bg-gray-700 rounded w-1/2 mb-12"></div>
+  //           <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 w-full">
+  //             <div className="h-96 bg-gray-800 rounded-lg"></div>
+  //             <div className="space-y-4">
+  //               <div className="h-40 bg-gray-800 rounded-lg"></div>
+  //               <div className="h-40 bg-gray-800 rounded-lg"></div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </section>
+  //   );
+  // }
+
+  console.log("Eventos a serem renderizados:", eventosDoMes);
+
 
   return (
     <section id="calendar" className="py-16 md:py-24 bg-black">

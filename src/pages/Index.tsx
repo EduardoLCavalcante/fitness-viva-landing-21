@@ -51,14 +51,14 @@ const Index = () => {
       <Footer />
       
       {/* Admin link for easy navigation */}
-      <div className="fixed bottom-4 right-4 z-50">
+      {/* <div className="fixed bottom-4 right-4 z-50">
         <Link 
           to="/adm" 
           className="bg-gray-900 hover:bg-gray-800 text-gray-400 text-sm px-3 py-1 rounded-full opacity-50 hover:opacity-100 transition-opacity duration-300"
         >
           Admin
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
