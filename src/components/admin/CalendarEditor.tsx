@@ -25,17 +25,25 @@ import {
 import { Label } from "@/components/ui/label";
 import { Pencil, Plus, Trash2, X, Check, Calendar } from "lucide-react";
 
+// Define the shape of the new date object to ensure required fields
+type NewSpecialDate = {
+  date: string;
+  type: string;
+  title: string;
+  description: string | null;
+};
+
 export const CalendarEditor = () => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   
   const [editingDate, setEditingDate] = useState<SpecialDate | null>(null);
   const [isAddingNew, setIsAddingNew] = useState(false);
-  const [newDate, setNewDate] = useState<Partial<SpecialDate>>({
+  const [newDate, setNewDate] = useState<NewSpecialDate>({
     date: "",
     type: "evento",
     title: "",
-    description: ""
+    description: null
   });
 
   // Fetch special dates
@@ -83,9 +91,9 @@ export const CalendarEditor = () => {
     }
   });
 
-  // Add date mutation
+  // Add date mutation - now properly typed
   const addDate = useMutation({
-    mutationFn: async (date: Partial<SpecialDate>) => {
+    mutationFn: async (date: NewSpecialDate) => {
       const { data, error } = await supabase
         .from('special_dates')
         .insert(date)
@@ -106,7 +114,7 @@ export const CalendarEditor = () => {
         date: "",
         type: "evento",
         title: "",
-        description: ""
+        description: null
       });
     },
     onError: (error) => {
@@ -160,7 +168,8 @@ export const CalendarEditor = () => {
       return;
     }
     
-    addDate.mutate(newDate as SpecialDate);
+    // Now we're passing a properly typed object with all required fields
+    addDate.mutate(newDate);
   };
 
   const handleDeleteDate = (id: number) => {
@@ -246,7 +255,7 @@ export const CalendarEditor = () => {
               <Label className="text-white">Descrição</Label>
               <Textarea 
                 value={newDate.description || ''} 
-                onChange={(e) => setNewDate({...newDate, description: e.target.value})}
+                onChange={(e) => setNewDate({...newDate, description: e.target.value || null})}
                 className="bg-gray-800 border-gray-700 text-white"
               />
             </div>
