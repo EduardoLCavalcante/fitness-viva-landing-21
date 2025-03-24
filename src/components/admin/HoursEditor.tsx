@@ -184,7 +184,7 @@ export const HoursEditor = () => {
     <div className="space-y-8">
       <div className="max-w-2xl mx-auto">
         <Card className="bg-gray-900 border-gray-800 mb-6">
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader className="flex flex-row max-sm:flex-wrap items-center justify-between">
             <CardTitle>Horários de Funcionamento</CardTitle>
             <Button 
               variant="outline" 
