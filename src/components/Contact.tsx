@@ -133,14 +133,14 @@ const Contact = () => {
                 <div className="space-y-6">
                   {Object.entries(hours).map(([type, typeHours]) => (
                     <div key={type} className="space-y-3">
-                      <h4 className="font-semibold text-center text-maisvida-green">{type}</h4>
+                      <h4 className="font-semibold text-center text-maisvida-green">{type == "Semana"? "Segunda - Sexta": type}</h4>
                       <div className="flex justify-center">
                         <ul className="text-center">
                           {typeHours.map((hour) => (
                             <li key={hour.id} className="text-gray-200 flex items-center justify-center gap-2">
-                              <Clock size={14} className="text-gray-400" />
-                              <span className="font-semibold">{hour.day_of_week}:</span>
-                              <span>{hour.opening_time} - {hour.closing_time}</span>
+                              <Clock size={14} className="text-gray-400"/>
+                              <span className="font-semibold">{type == "Semana"? "":hour.day_of_week}</span>
+                              <span>{hour.opening_time === "Fechado"?"Fechado":`${hour.opening_time} - ${hour.closing_time}`}</span>
                             </li>
                           ))}
                         </ul>

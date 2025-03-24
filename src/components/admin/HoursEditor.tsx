@@ -79,7 +79,12 @@ export const HoursEditor = () => {
     mutationFn: async (hour: Partial<BusinessHour>) => {
       const { data, error } = await supabase
         .from('business_hours')
-        .insert(hour)
+        .insert({
+          day_of_week: hour.day_of_week!,
+          opening_time: hour.opening_time!,
+          closing_time: hour.closing_time!,
+          type: hour.type || "Semana",
+        })
         .select()
         .single();
       
@@ -143,7 +148,7 @@ export const HoursEditor = () => {
   };
 
   const handleAddHour = () => {
-    if (!newHour.day_of_week || !newHour.opening_time || !newHour.closing_time) {
+    if (!newHour.day_of_week && newHour.type === "Final de Semana" || !newHour.opening_time || !newHour.closing_time) {
       toast({
         title: "Campos obrigatórios",
         description: "Preencha todos os campos para adicionar um novo horário.",
@@ -173,6 +178,8 @@ export const HoursEditor = () => {
     return <div className="text-center py-12">Carregando horários de funcionamento...</div>;
   }
 
+  const AddTypeDay = newHour.type === "Semana" ? "hidden":"";
+  const EditTypeDay = editingHour?.type === "Semana" ? "hidden":"";
   return (
     <div className="space-y-8">
       <div className="max-w-2xl mx-auto">
@@ -209,7 +216,7 @@ export const HoursEditor = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div>
+                  <div className={`${AddTypeDay}`}>
                     <Label className="text-white">Dia da Semana</Label>
                     <Input 
                       value={newHour.day_of_week} 
@@ -258,12 +265,12 @@ export const HoursEditor = () => {
             {Object.keys(groupedHours).length > 0 ? (
               Object.entries(groupedHours).map(([type, typeHours]) => (
                 <div key={type} className="space-y-4">
-                  <h3 className="text-lg font-semibold text-white border-b border-gray-800 pb-2">{type}</h3>
+                  <h3 className="text-lg font-semibold text-white border-b border-gray-800 pb-2">{type == "Semana" ? "Horários": type} </h3>
                   <div className="space-y-4">
                     {typeHours.map((hour) => (
                       <div key={hour.id} className="border-b border-gray-800 last:border-0 pb-4 last:pb-0">
                         <div className="flex justify-between items-center mb-2">
-                          <div className="font-medium text-white">{hour.day_of_week}</div>
+                          <div className="font-medium text-white">{type == "Semana" ? "":hour.day_of_week}</div>
                           <div className="flex items-center gap-2">
                             {editingHour?.id !== hour.id && (
                               <>
@@ -291,7 +298,7 @@ export const HoursEditor = () => {
                         {editingHour?.id === hour.id ? (
                           <div className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
-                              <div>
+                              {/* <div>
                                 <Label className="text-white">Tipo</Label>
                                 <Select 
                                   value={editingHour.type} 
@@ -305,8 +312,8 @@ export const HoursEditor = () => {
                                     <SelectItem value="Final de Semana">Final de Semana</SelectItem>
                                   </SelectContent>
                                 </Select>
-                              </div>
-                              <div>
+                              </div> */}
+                              <div className={`${EditTypeDay}`}>
                                 <Label className="text-white">Dia da Semana</Label>
                                 <Input 
                                   value={editingHour.day_of_week} 
