@@ -140,7 +140,11 @@ const Contact = () => {
                             <li key={hour.id} className="text-gray-200 flex items-center justify-center gap-2">
                               <Clock size={14} className="text-gray-400"/>
                               <span className="font-semibold">{type == "Semana"? "":hour.day_of_week}</span>
-                              <span>{hour.opening_time === "Fechado"?"Fechado":`${hour.opening_time} - ${hour.closing_time}`}</span>
+                                {hour.opening_time === "Fechado" ? (
+                              <span>Fechado</span>
+                            ) : (
+                              <span>{hour.opening_time} - {hour.closing_time}</span>
+                            )}
                             </li>
                           ))}
                         </ul>
