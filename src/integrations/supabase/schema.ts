@@ -43,6 +43,7 @@ export type BusinessHour = {
   day_of_week: string;
   opening_time: string;
   closing_time: string;
+  type: string;
   created_at: string;
   updated_at: string;
 }

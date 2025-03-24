@@ -1,21 +1,59 @@
 
-import { useState } from "react";
-import { MapPin, Phone, Mail, Send } from "lucide-react";
+import { useState, useEffect } from "react";
+import { MapPin, Phone, Mail, Send, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import LocationMap from "./LocationMap";
+import { supabase } from "@/integrations/supabase/client";
+import { BusinessHour } from "@/integrations/supabase/schema";
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
- 
     message: ""
   });
+  const [hours, setHours] = useState<Record<string, BusinessHour[]>>({});
+  const [isLoading, setIsLoading] = useState(true);
 
   // Coordenadas para MAIS VIDA Studio de Musculação em Russas, Ceará, Brasil
   const gymLocation: [number, number] = [-5.1538788, -38.0926763];
+
+  useEffect(() => {
+    const fetchBusinessHours = async () => {
+      try {
+        setIsLoading(true);
+        const { data, error } = await supabase
+          .from('business_hours')
+          .select('*')
+          .order('type')
+          .order('id');
+          
+        if (error) {
+          console.error('Erro ao buscar horários:', error);
+          return;
+        }
+
+        // Agrupar horários por tipo
+        const groupedHours = (data as BusinessHour[]).reduce((acc, hour) => {
+          if (!acc[hour.type]) {
+            acc[hour.type] = [];
+          }
+          acc[hour.type].push(hour);
+          return acc;
+        }, {} as Record<string, BusinessHour[]>);
+
+        setHours(groupedHours);
+      } catch (err) {
+        console.error('Erro ao buscar horários:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchBusinessHours();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,7 +68,6 @@ const Contact = () => {
       description: "Entraremos em contato em breve.",
     });
     setFormData({
-    
       message: ""
     });
 
@@ -40,8 +77,6 @@ const Contact = () => {
     window.open("_blank");
   };
 
-
-    console.log(formData.message)
   return (
     <section id="contact" className="py-20 bg-black relative overflow-hidden">
       {/* Patrones decorativos */}
@@ -82,32 +117,42 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold ">Telefone</h4>
                     <p className="text-gray-200">+55 (88) 99291-8463</p>
-                   
                   </div>
                 </div>
-                
-              
               </div>
             </div>
             
-            <div className="bg-maisvida-dark  p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-maisvida-dark p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6">Horário de Funcionamento</h3>
-              <div className="space-y-3 ">
+              
+              {isLoading ? (
                 <div className="flex justify-center">
-                  <ul className="text-center">
-                  <span className="font-semibold text-center">Segunda - Sexta:</span>
-                  <li className="text-gray-200">5:00 - 10:00</li>
-                  <li className="text-gray-200">12:00 - 13:00</li>
-                  <li className="text-gray-200">15:00 - 21:00</li>
-                  </ul>
+                  <p className="text-gray-400">Carregando horários...</p>
                 </div>
-                <div className="flex justify-center">
-                  <ul className="text-center">
-                    <span className="font-semibold ">Sábado:</span>
-                    <li className="text-gray-200">6:00 - 10:00</li>
-                  </ul>
+              ) : (
+                <div className="space-y-6">
+                  {Object.entries(hours).map(([type, typeHours]) => (
+                    <div key={type} className="space-y-3">
+                      <h4 className="font-semibold text-center text-maisvida-green">{type}</h4>
+                      <div className="flex justify-center">
+                        <ul className="text-center">
+                          {typeHours.map((hour) => (
+                            <li key={hour.id} className="text-gray-200 flex items-center justify-center gap-2">
+                              <Clock size={14} className="text-gray-400" />
+                              <span className="font-semibold">{hour.day_of_week}:</span>
+                              <span>{hour.opening_time} - {hour.closing_time}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {Object.keys(hours).length === 0 && (
+                    <p className="text-center text-gray-400">Informações de horário não disponíveis no momento.</p>
+                  )}
                 </div>
-              </div>
+              )}
             </div>
           </div>
           
@@ -115,9 +160,6 @@ const Contact = () => {
             <div className="bg-maisvida-dark p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <h3 className="text-2xl font-bold mb-6 ">Envie uma Mensagem</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
-   
-                
-       
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Mensagem

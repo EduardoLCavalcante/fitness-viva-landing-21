@@ -16,6 +16,7 @@ export type Database = {
           day_of_week: string
           id: number
           opening_time: string
+          type: string
           updated_at: string
         }
         Insert: {
@@ -24,6 +25,7 @@ export type Database = {
           day_of_week: string
           id?: number
           opening_time: string
+          type?: string
           updated_at?: string
         }
         Update: {
@@ -32,6 +34,7 @@ export type Database = {
           day_of_week?: string
           id?: number
           opening_time?: string
+          type?: string
           updated_at?: string
         }
         Relationships: []
