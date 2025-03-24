@@ -51,7 +51,7 @@ const Hero = () => {
                   <img 
                     src="maisvida-logo.jpeg" 
                     alt="+ Vida Logo" 
-                    className="w-16 h-16 md:w-24 md:h-24 absolute -top-2 -right-20 md:-right-28 animate-pulse"
+                    className="w-16 h-16 md:w-24 md:h-24  absolute -top-2 -right-20 md:-right-28 animate-pulse"
                   />
                 </span>
               </div>
@@ -117,9 +117,9 @@ const Hero = () => {
                 <div className="p-2 rounded-full  bg-gradient-to-br from-black via-black to-maisvida-dark border-2 border-white/5 shadow-2xl">
                   <div className="p-1 rounded-full bg-gradient-to-br from-maisvida-green/20 to-maisvida-red/20 backdrop-blur-lg">
                     <img 
-                      src="maisvida-logo.jpeg" 
+                      src="logo_vida_circular_preto.png" 
                       alt="+ Vida Studio" 
-                      className="w-64 h-64 object-contain drop-shadow-2xl"
+                      className="w-64 h-64 object-fill rounded-full drop-shadow-2xl"
                     />
                   </div>
                 </div>
