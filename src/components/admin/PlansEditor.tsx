@@ -24,7 +24,24 @@ import {
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Label } from "@/components/ui/label";
-import { Pencil, Plus, Trash2, X, Check, AlertCircle } from "lucide-react";
+import { 
+  Pencil, 
+  Plus, 
+  Trash2, 
+  X, 
+  Check, 
+  AlertCircle, 
+  PlusCircle 
+} from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export const PlansEditor = () => {
   const { toast } = useToast();
@@ -33,6 +50,16 @@ export const PlansEditor = () => {
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
   const [editingFeature, setEditingFeature] = useState<{planId: number, feature: string, id?: number} | null>(null);
   const [newFeature, setNewFeature] = useState("");
+  const [isNewPlanDialogOpen, setIsNewPlanDialogOpen] = useState(false);
+  const [newPlan, setNewPlan] = useState<Partial<Plan>>({
+    name: "",
+    type: "mensal",
+    class: "default",
+    price: "",
+    loyalty_price: "",
+    description: "",
+    highlighted: false
+  });
 
   // Fetch plans
   const { data: plans, isLoading: plansLoading } = useQuery({
@@ -88,6 +115,81 @@ export const PlansEditor = () => {
       toast({
         title: "Erro ao atualizar plano",
         description: "Ocorreu um erro ao atualizar o plano.",
+        variant: "destructive",
+      });
+    }
+  });
+
+  // Create plan mutation
+  const createPlan = useMutation({
+    mutationFn: async (plan: Partial<Plan>) => {
+      const { data, error } = await supabase
+        .from('plans')
+        .insert([{
+          name: plan.name,
+          type: plan.type,
+          class: plan.class,
+          price: plan.price,
+          loyalty_price: plan.loyalty_price,
+          description: plan.description,
+          highlighted: plan.highlighted
+        }])
+        .select()
+        .single();
+      
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['plans'] });
+      toast({
+        title: "Plano criado",
+        description: "O plano foi criado com sucesso.",
+      });
+      setIsNewPlanDialogOpen(false);
+      setNewPlan({
+        name: "",
+        type: "mensal",
+        class: "default",
+        price: "",
+        loyalty_price: "",
+        description: "",
+        highlighted: false
+      });
+    },
+    onError: (error) => {
+      console.error(error);
+      toast({
+        title: "Erro ao criar plano",
+        description: "Ocorreu um erro ao criar o plano.",
+        variant: "destructive",
+      });
+    }
+  });
+
+  // Delete plan mutation
+  const deletePlan = useMutation({
+    mutationFn: async (planId: number) => {
+      const { error } = await supabase
+        .from('plans')
+        .delete()
+        .eq('id', planId);
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['plans'] });
+      queryClient.invalidateQueries({ queryKey: ['plan_features'] });
+      toast({
+        title: "Plano removido",
+        description: "O plano foi removido com sucesso.",
+      });
+    },
+    onError: (error) => {
+      console.error(error);
+      toast({
+        title: "Erro ao remover plano",
+        description: "Ocorreu um erro ao remover o plano.",
         variant: "destructive",
       });
     }
@@ -185,6 +287,25 @@ export const PlansEditor = () => {
     updatePlan.mutate(plan);
   };
 
+  const handleCreatePlan = () => {
+    if (!newPlan.name || !newPlan.price || !newPlan.loyalty_price) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Preencha todos os campos obrigatórios.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    createPlan.mutate(newPlan);
+  };
+
+  const handleDeletePlan = (planId: number) => {
+    if (confirm("Tem certeza que deseja remover este plano? Esta ação não pode ser desfeita e removerá todos os recursos associados.")) {
+      deletePlan.mutate(planId);
+    }
+  };
+
   const handleUpdateFeature = (id: number, feature: string) => {
     updateFeature.mutate({ id, feature });
   };
@@ -214,6 +335,122 @@ export const PlansEditor = () => {
 
   return (
     <div className="space-y-8">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-lg font-medium">Lista de Planos</h3>
+        <Dialog open={isNewPlanDialogOpen} onOpenChange={setIsNewPlanDialogOpen}>
+          <DialogTrigger asChild>
+            <Button className="bg-maisvida-green hover:bg-green-700">
+              <PlusCircle className="mr-2 h-4 w-4" /> Adicionar Plano
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="bg-gray-900 border-gray-800 text-white">
+            <DialogHeader>
+              <DialogTitle>Adicionar Novo Plano</DialogTitle>
+              <DialogDescription className="text-gray-400">
+                Preencha os detalhes do novo plano abaixo.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Nome do plano *</Label>
+                <Input
+                  id="name"
+                  value={newPlan.name}
+                  onChange={(e) => setNewPlan({...newPlan, name: e.target.value})}
+                  className="bg-gray-800 border-gray-700 text-white"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="type">Tipo de plano *</Label>
+                <Select 
+                  value={newPlan.type} 
+                  onValueChange={(value) => setNewPlan({...newPlan, type: value})}
+                >
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                    <SelectValue placeholder="Selecione o tipo" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-gray-800 border-gray-700 text-white">
+                    <SelectItem value="mensal">Mensal</SelectItem>
+                    <SelectItem value="fidelidade">Fidelidade</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="class">Classe *</Label>
+                <Select 
+                  value={newPlan.class} 
+                  onValueChange={(value) => setNewPlan({...newPlan, class: value})}
+                >
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                    <SelectValue placeholder="Selecione a classe" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-gray-800 border-gray-700 text-white">
+                    <SelectItem value="default">Default</SelectItem>
+                    <SelectItem value="premium">Premium</SelectItem>
+                    <SelectItem value="gold">Gold</SelectItem>
+                    <SelectItem value="silver">Silver</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="price">Preço *</Label>
+                <Input
+                  id="price"
+                  value={newPlan.price}
+                  onChange={(e) => setNewPlan({...newPlan, price: e.target.value})}
+                  className="bg-gray-800 border-gray-700 text-white"
+                  placeholder="ex: R$ 99,90"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="loyalty_price">Preço Fidelidade *</Label>
+                <Input
+                  id="loyalty_price"
+                  value={newPlan.loyalty_price}
+                  onChange={(e) => setNewPlan({...newPlan, loyalty_price: e.target.value})}
+                  className="bg-gray-800 border-gray-700 text-white"
+                  placeholder="ex: R$ 89,90"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="description">Descrição</Label>
+                <Textarea
+                  id="description"
+                  value={newPlan.description || ''}
+                  onChange={(e) => setNewPlan({...newPlan, description: e.target.value})}
+                  className="bg-gray-800 border-gray-700 text-white"
+                />
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  id="highlighted"
+                  type="checkbox"
+                  checked={newPlan.highlighted || false}
+                  onChange={(e) => setNewPlan({...newPlan, highlighted: e.target.checked})}
+                  className="h-4 w-4"
+                />
+                <Label htmlFor="highlighted">Plano destacado</Label>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button 
+                variant="outline" 
+                onClick={() => setIsNewPlanDialogOpen(false)}
+                className="border-gray-700 text-white hover:bg-gray-800"
+              >
+                Cancelar
+              </Button>
+              <Button 
+                className="bg-maisvida-green hover:bg-green-700"
+                onClick={handleCreatePlan}
+              >
+                Adicionar Plano
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
+
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {plans?.map((plan) => (
           <Card key={plan.id} className="bg-gray-900 border-gray-800">
@@ -228,14 +465,24 @@ export const PlansEditor = () => {
                 ) : (
                   <div className="flex justify-between">
                     <span>{plan.name}</span>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      onClick={() => setEditingPlan(plan)}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Pencil size={16} />
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => setEditingPlan(plan)}
+                        className="h-8 w-8 p-0"
+                      >
+                        <Pencil size={16} />
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => handleDeletePlan(plan.id)}
+                        className="h-8 w-8 p-0 text-red-500 hover:text-red-400"
+                      >
+                        <Trash2 size={16} />
+                      </Button>
+                    </div>
                   </div>
                 )}
               </CardTitle>
