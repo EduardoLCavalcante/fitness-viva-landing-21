@@ -34,7 +34,7 @@ const AppSection = () => {
             <h2 className="text-4xl font-bold text-maisvida-white mb-4">NOSSO <span className="text-maisvida-green">APLICATIVO</span></h2>
             <div className="w-24 h-1 bg-maisvida-red mb-6"></div>
             <p className="text-lg text-gray-300 mb-8">
-              O aplicativo Mais Vida foi desenvolvido para proporcionar uma experiência completa aos nossos alunos. Com ele, você tem acesso ao seu treino, agenda, avaliações e muito mais, tudo na palma da sua mão.
+              O aplicativo ScaFIT foi desenvolvido para proporcionar uma experiência completa aos nossos alunos. Com ele, você tem acesso ao seu treino, agenda, avaliações e muito mais, tudo na palma da sua mão.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">

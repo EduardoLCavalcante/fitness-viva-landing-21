@@ -1,5 +1,5 @@
 
-import { HeartPulse, Dumbbell, Users, Award, Clock, Calendar, Target } from "lucide-react";
+import { HeartPulse, Dumbbell, Users, Award, Clock, Calendar } from "lucide-react";
 
 const About = () => {
   return (
@@ -78,23 +78,11 @@ const About = () => {
               </div>
               
               <div className="p-6 space-y-4">
-                <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
-                    <Clock className="h-6 w-6 text-maisvida-green" />
-                  </div>
-                  <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">TURMA DE MEIO DIA</h5>
-                    <p className="text-gray-400 mt-1">Nova turma das 12:00 ás 13:00.</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Seg/Ter/Qua/Quint/Sex</span>
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">12h - 13h</span>
-                    </div>
-                  </div>
-                </div>
+             
                 
                 <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
                   <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
-                    <Target className="h-6 w-6 text-maisvida-green" />
+                    <Clock className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
                     <h5 className="font-semibold text-lg text-maisvida-green">NOVA TURMA AO SÁBADO</h5>

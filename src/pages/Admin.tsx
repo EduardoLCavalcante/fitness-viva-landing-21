@@ -12,8 +12,8 @@ const AdminPage = () => {
   
   return (
     <AdminLayout>
-      <Tabs defaultValue="plans" className="w-full">
-        <TabsList className="mb-6 md:mb-8 bg-gray-900 border border-gray-800 p-1 w-full overflow-x-auto flex-wrap">
+      <Tabs defaultValue="plans" className="w-full ">
+        <TabsList className="mb-6 md:mb-8 overflow-hidden bg-gray-900 border border-gray-800 p-1 w-full overflow-x-auto flex-wrap">
           <TabsTrigger 
             value="plans"
             className="data-[state=active]:bg-maisvida-green data-[state=active]:text-white flex-1"

@@ -3,14 +3,20 @@ import { useState, ReactNode } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { LoginForm } from "./LoginForm";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { User, LogOut, Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useNavigate } from "react-router-dom";
 
 export const AdminLayout = ({ children }: { children: ReactNode }) => {
   const { user, signOut, loading } = useAuth();
   const isMobile = useIsMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    signOut()
+    navigate("/")
+  }
 
   if (loading) {
     return (
@@ -51,7 +57,7 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      onClick={signOut}
+                      onClick={handleClick}
                       className="border-gray-700 hover:bg-gray-800 w-full"
                     >
                       <LogOut size={16} className="mr-2" /> Sair
@@ -69,7 +75,7 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
               <Button 
                 variant="outline" 
                 size="sm" 
-                onClick={signOut}
+                onClick={handleClick}
                 className="border-gray-700 hover:bg-gray-800"
               >
                 <LogOut size={16} className="mr-2" /> Sair
