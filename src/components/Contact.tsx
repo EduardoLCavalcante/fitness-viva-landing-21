@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { MapPin, Phone, Mail, Send, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Clock, Instagram, SquareArrowOutUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -117,6 +117,22 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold ">Telefone</h4>
                     <p className="text-gray-200">+55 (88) 99291-8463</p>
+                  </div>
+                </div>
+                <div className="flex items-start group">
+                  <div className="bg-maisvida-green/10 p-3 rounded-full mr-4 group-hover:bg-maisvida-green/20 transition-all duration-300">
+                    <Instagram className="h-6 w-6 text-maisvida-green" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold ">Instagram</h4>
+
+                    <a
+                    href="https://www.instagram.com/mais.vida_studio.de.musculacao/" 
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-200 gap-2 flex"><SquareArrowOutUpRight />Link
+                    </a>
+                    
                   </div>
                 </div>
               </div>

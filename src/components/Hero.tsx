@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="mb-8 flex justify-center lg:justify-start">
               <div className="flex items-center gap-3 py-2 px-4 bg-maisvida-green/10 backdrop-blur-sm rounded-full border border-maisvida-green/20">
                 <span className="w-2 h-2 bg-maisvida-green rounded-full animate-pulse"></span>
-                <span className="text-white/90 text-sm font-medium tracking-wide">Studio Fitness</span>
+                <span className="text-white/90 text-sm font-medium tracking-wide">Studio de Musuculação</span>
               </div>
             </div>
             
@@ -75,37 +75,49 @@ const Hero = () => {
               </Button>
             </div>
             
-            <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-8">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-maisvida-green/10 backdrop-blur-sm border border-maisvida-green/20">
+            <div className="mt-12 flex flex-col justify-center lg:justify-start gap-8">
+              {/* Missão */}
+              <div className="flex items-start gap-3">
+                <div className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center bg-maisvida-green/10 backdrop-blur-sm border border-maisvida-green/20 self-start">
                   <Dumbbell className="text-maisvida-green h-6 w-6" />
                 </div>
-                <div className="text-left">
-                  <p className="text-white font-bold">20+</p>
-                  <p className="text-white/70 text-sm">Equipamentos</p>
+                <div className="text-left space-y-1">
+                  <p className="text-white font-bold">Missão</p>
+                  <p className="text-white/70 text-sm">
+                    Promover melhorias na qualidade de vida dos nossos alunos com a prática regular do exercício físico
+                  </p>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-maisvida-red/10 backdrop-blur-sm border border-maisvida-red/20">
+
+              {/* Visão */}
+              <div className="flex items-start gap-3">
+                <div className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center bg-maisvida-red/10 backdrop-blur-sm border border-maisvida-red/20 self-start">
                   <HeartPulse className="text-maisvida-red h-6 w-6" />
                 </div>
-                <div className="text-left">
-                  <p className="text-white font-bold">Exelentes</p>
-                  <p className="text-white/70 text-sm">Profissionais</p>
+                <div className="text-left space-y-1">
+                  <p className="text-white font-bold">Visão</p>
+                  <p className="text-white/70 text-sm">
+                    Desenvolver os benefícios da prática regular nos aspectos psicológicos, fisiológicos e funcionais, de forma significativa, trazendo longevidade para a vida
+                  </p>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center bg-yellow-500/10 backdrop-blur-sm border border-yellow-500/20">
+
+              {/* Valores */}
+              <div className="flex items-start gap-3">
+                <div className="w-12 h-12 shrink-0 rounded-full flex items-center justify-center bg-yellow-500/10 backdrop-blur-sm border border-yellow-500/20 self-start">
                   <Trophy className="text-yellow-500 h-6 w-6" />
                 </div>
-                <div className="text-left">
-                  <p className="text-white font-bold">500+</p>
-                  <p className="text-white/70 text-sm">Clientes Satisfeitos</p>
+                <div className="text-left space-y-1">
+                  <p className="text-white font-bold">Valores</p>
+                  <p className="text-white/70 text-sm">Experiência de vida</p>
+                  <p className="text-white/70 text-sm">Ética e Profissionalismo</p>
+                  <p className="text-white/70 text-sm">Segurança e Responsabilidade</p>
+                  <p className="text-white/70 text-sm">Qualidade e Eficiência</p>
+                  <p className="text-white/70 text-sm">Organização e Busca pela Excelência</p>
                 </div>
               </div>
             </div>
+
           </div>
           
           {/* Right section with logo and visual elements */}
@@ -126,11 +138,12 @@ const Hero = () => {
                 
                 <div className="mt-8 text-center">
                   <h2 className="text-4xl font-bold">
-                    <span className="text-white">STUDIO DE</span>
+                    <span className="text-white">MAIS </span>
+                    <span className="text-4xl font-bold bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">
+                     VIDA
+                  </span>
                   </h2>
-                  <h2 className="text-4xl font-bold bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">
-                    MUSCULAÇÃO
-                  </h2>
+                  
                   
                 </div>
               </div>
@@ -139,7 +152,7 @@ const Hero = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+        <div className="absolute pt-5 bottom-0 left-0 right-0 flex justify-center ">
           <button 
             onClick={scrollToAbout}
             className="group flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity"

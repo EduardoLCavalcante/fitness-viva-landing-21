@@ -19,13 +19,13 @@ const Footer = () => {
                 </div>
               </div>
               <div className="ml-2">
-                <h3 className="font-bold text-xl text-white">+ VIDA</h3>
+                <h3 className="font-bold text-xl text-white">MAIS VIDA</h3>
                 <div className="bg-gradient-to-r from-maisvida-green to-maisvida-red h-0.5 w-full"></div>
                 <p className="text-white/80 text-xs tracking-wide">STUDIO DE MUSCULAÇÃO</p>
               </div>
             </div>
             <p className="text-gray-400 mb-6 font-light">
-              Transformando vidas através da saúde e do bem-estar. Junte-se a nós nessa jornada!
+              Transformando vidas através poderoso e principal medicamento "exercício físico".
             </p>
             <div className="flex space-x-4">
             

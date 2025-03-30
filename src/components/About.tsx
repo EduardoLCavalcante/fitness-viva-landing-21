@@ -25,7 +25,7 @@ const About = () => {
             </div>
             <h3 className="text-xl font-bold mb-4">Saúde em Primeiro Lugar</h3>
             <p className="text-gray-400">
-              Nosso foco é melhorar sua saúde e bem-estar através de treinamentos adequados à sua condição física.
+            Nosso foco é melhorar sua saúde e qualidade de vida, buscando longevidade funcional, através do treinamento de força.
             </p>
           </div>
           
@@ -35,7 +35,7 @@ const About = () => {
             </div>
             <h3 className="text-xl font-bold mb-4">Equipamentos Modernos</h3>
             <p className="text-gray-400">
-              Contamos com equipamentos de última geração para garantir treinos eficientes e seguros.
+            Contamos com equipamentos de excelentes biomecânica, assim potencializando seus resultados.
             </p>
           </div>
           
@@ -45,7 +45,7 @@ const About = () => {
             </div>
             <h3 className="text-xl font-bold mb-4">Profissionais Qualificados</h3>
             <p className="text-gray-400">
-              Nossa equipe é formada por profissionais especializados que irão acompanhar sua evolução.
+            Nossa equipe é formada por personais capacitados e qualificados para orientar e acompanhar durante sua rotina de treinos.
             </p>
           </div>
           
@@ -53,9 +53,10 @@ const About = () => {
             <div className="w-16 h-16 bg-maisvida-green rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
               <Award size={32} className="text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-4">Ambiente Exclusivo</h3>
+            <h3 className="text-xl font-bold mb-4">Ambiente Inclusivo</h3>
             <p className="text-gray-400">
-              Um espaço pensado para oferecer conforto e privacidade durante seus treinos.
+            
+            Espaço dedicado a oferecer suporte a jovens, adultos, idosos, gestantes, obesos e sedentários, problemas osteomusculares…
             </p>
           </div>
         </div>
@@ -85,8 +86,8 @@ const About = () => {
                     <Clock className="h-6 w-6 text-maisvida-green" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">NOVA TURMA AO SÁBADO</h5>
-                    <p className="text-gray-400 mt-1">Nova turma ao sábado de manhã</p>
+                    <h5 className="font-semibold text-lg text-maisvida-green">NOVO HORÁRIO</h5>
+                    <p className="text-gray-400 mt-1">Sábado 06:00 ás 10:00</p>
                     <div className="flex items-center gap-2 mt-2">
                       <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Sáb</span>
                       <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">6h - 10h</span>
