@@ -191,12 +191,7 @@ const Plans = () => {
           viewport={{ once: true }}
           className="mt-10 text-center"
         >
-          <div className="inline-block bg-gray-800/70 backdrop-blur-sm px-5 py-3 rounded-lg border border-gray-700">
-            <p className="text-gray-300 text-sm">
-              <span className="text-maisvida-green font-medium">Aviso: </span> 
-              Para pagamentos com Débito há acréscimo de R$ 3,00 e para Crédito R$ 5,00.
-            </p>
-          </div>
+      
         </motion.div>
       </div>
     </section>
