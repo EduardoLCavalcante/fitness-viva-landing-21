@@ -54,7 +54,6 @@ const Plans = () => {
     window.location.href = `https://api.whatsapp.com/send?phone=5588992918463&text=${whatsappMessage}${selectedPlan.name}`;
     window.open("_blank");
   };
-
   // Loading state
   if (plansLoading || featuresLoading) {
     return (
@@ -169,7 +168,8 @@ const Plans = () => {
                     </button>
 
                     <div className="space-y-3">
-                      <p className="font-medium text-sm">Escolha uma opção:</p>
+                      {}
+                      <p className="font-medium text-sm"></p>
                       {planFeatures.map((feature) => (
                         <div key={feature.id} className="flex items-start">
                           <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
