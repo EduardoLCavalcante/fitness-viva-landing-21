@@ -46,7 +46,7 @@ const Hero = () => {
               <span className="text-white">Qualidade de vida, saúde e</span>
               <br />
               <div className="relative inline-flex">
-                <span className="bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">LOGEVIDADE</span>
+                <span className="bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">LONGEVIDADE</span>
                 <span className="ml-4 relative">
                   <img 
                     src="maisvida-logo.jpeg" 
