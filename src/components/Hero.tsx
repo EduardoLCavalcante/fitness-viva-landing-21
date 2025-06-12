@@ -58,7 +58,8 @@ const Hero = () => {
             </h1>
             
             <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-lg font-light">
-            ambiente inclusivo e acolhedor, equipamentos novos e ótima biomecânica, profissionais capacitados e qualificados para ajudar você nessa missão.
+                Faça parte da familia +V e viva ótimas experiências no seu dia. Um ambiente inclusivo de acolhedor com equipamentos novos de biomecânica
+                excelente, profissionais qualificados e capacitados para ajudar a você nesse objetivo
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
