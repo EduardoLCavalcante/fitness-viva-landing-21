@@ -154,7 +154,7 @@ const Plans = () => {
                       <span className="text-gray-400 ml-2">
                         {annual ? 
                           plan.class === "default" ? 
-                            "/mês" : 
+                            "" : 
                             "" : 
                           "/mês"
                         }
