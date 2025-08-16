@@ -11,6 +11,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import DailyWeeklyRates from "@/components/DailyWeeklyRates";
 import Services from "@/components/Services";
+import GallerySection from "@/components/GallerySection";
 
 const Index = () => {
   // Enhanced animation effect for scroll reveal with staggered timing
@@ -46,6 +47,7 @@ const Index = () => {
         <Plans />
         <DailyWeeklyRates />
         <Services />
+        <GallerySection />
         <CalendarSection />
         <AppSection />
         <Contact />
