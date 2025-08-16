@@ -23,7 +23,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-maisvida-dark to-black z-0"></div>
       
       {/* Decorative patterns */}
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/1659bce7-66ac-4396-8720-c3af97937d70.png')] bg-center bg-no-repeat bg-contain opacity-[0.03] z-0"></div>
+      <div className="absolute inset-0 bg-[url('/lovable-uploads/231ca6bb-1042-4036-914f-09bcbe190ab6.png')] bg-center bg-no-repeat bg-contain opacity-[0.03] z-0"></div>
       
       {/* Dynamic elements */}
       <div className="absolute w-full h-full z-0">
@@ -49,7 +49,7 @@ const Hero = () => {
                 <span className="bg-gradient-to-r from-maisvida-green to-emerald-400 bg-clip-text text-transparent">LONGEVIDADE</span>
                 <span className="ml-4 relative">
                   <img 
-                    src="/lovable-uploads/1659bce7-66ac-4396-8720-c3af97937d70.png" 
+                    src="/lovable-uploads/231ca6bb-1042-4036-914f-09bcbe190ab6.png" 
                     alt="+ Vida Logo" 
                     className="w-16 h-16 md:w-24 md:h-24  absolute -top-2 -right-20 md:-right-28 animate-pulse"
                   />
@@ -130,7 +130,7 @@ const Hero = () => {
                 <div className="p-2 rounded-full  bg-gradient-to-br from-black via-black to-maisvida-dark border-2 border-white/5 shadow-2xl">
                   <div className="p-1 rounded-full bg-gradient-to-br from-maisvida-green/20 to-maisvida-red/20 backdrop-blur-lg">
                     <img 
-                      src="/lovable-uploads/1659bce7-66ac-4396-8720-c3af97937d70.png" 
+                      src="/lovable-uploads/231ca6bb-1042-4036-914f-09bcbe190ab6.png" 
                       alt="+ Vida Studio"
                       className="w-64 h-64 object-fill rounded-full drop-shadow-2xl"
                     />
