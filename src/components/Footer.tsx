@@ -21,7 +21,7 @@ const Footer = () => {
               <div className="ml-2">
                 <h3 className="font-bold text-xl text-white">MAIS VIDA</h3>
                 <div className="bg-gradient-to-r from-maisvida-green to-maisvida-red h-0.5 w-full"></div>
-                <p className="text-white/80 text-xs tracking-wide">STUDIO DE MUSCULAÇÃO</p>
+                <p className="text-white/80 text-xs tracking-wide">Studio de Treinamento</p>
               </div>
             </div>
             <p className="text-gray-400 mb-6 font-light">

@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="mb-8 flex justify-center lg:justify-start">
               <div className="flex items-center gap-3 py-2 px-4 bg-maisvida-green/10 backdrop-blur-sm rounded-full border border-maisvida-green/20">
                 <span className="w-2 h-2 bg-maisvida-green rounded-full animate-pulse"></span>
-                <span className="text-white/90 text-sm font-medium tracking-wide">Studio de Musculação</span>
+                <span className="text-white/90 text-sm font-medium tracking-wide">Studio de Treinamento</span>
               </div>
             </div>
             

@@ -5,6 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 
 const gymSectors = [
   {
@@ -38,8 +39,20 @@ const gymSectors = [
 ];
 
 const GallerySection = () => {
+
+  const [activeSector,setActiveSector] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+
+   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <section id="gallery" className="py-20 bg-black text-white">
+    <section id="about" className="py-20 bg-black text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-4xl font-bold mb-4">
@@ -60,35 +73,92 @@ const GallerySection = () => {
             className="w-full max-w-6xl mx-auto"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
-              {gymSectors.map((sector) => (
-                <CarouselItem key={sector.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/2">
-                  <div className="relative overflow-hidden rounded-lg shadow-xl group h-96 cursor-pointer">
-                    {/* Image Background */}
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                      style={{ 
-                        backgroundImage: `url(${sector.src})` 
-                      }}
-                    />
-                    
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
-                    
-                    {/* Content */}
-                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-                      <h3 className={`text-4xl font-bold mb-4 ${sector.color} group-hover:scale-110 transition-transform duration-300`}>
-                        {sector.title}
-                      </h3>
-                      <p className="text-white text-lg max-w-md opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                        {sector.description}
-                      </p>
+              {gymSectors.map((sector) => { 
+                const isActive = activeSector === sector.id;
+
+                return (
+                  <CarouselItem
+                    key={sector.id}
+                    className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/2"
+                  >
+                    <div
+                    onClick={() =>
+                        isMobile && setActiveSector(isActive ? null : sector.id)
+                    }
+                      className="relative overflow-hidden rounded-lg shadow-xl group h-96 cursor-pointer"
+                    >
+                      {/* Image Background */}
+                      <div
+                        className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 
+                          ${
+                            isMobile
+                              ? isActive && "scale-110"
+                              : "group-hover:scale-110"
+                          }
+                        `}
+                        style={{
+                          backgroundImage: `url(${sector.src})`,
+                        }}
+                      />
+
+                      {/* Overlay */}
+                      <div
+                        className={`absolute inset-0 transition-all duration-300
+                          ${
+                            isMobile
+                              ? isActive
+                                ? "bg-black/20"
+                                : "bg-black/40"
+                              : "bg-black/40 group-hover:bg-black/20"
+                          }
+                        `}
+                      />
+
+                      {/* Content */}
+                      <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+                        <h3
+                          className={`text-4xl font-bold mb-4 ${sector.color} transition-transform duration-300
+                          ${
+                            isMobile
+                              ? isActive && "scale-110"
+                              : "group-hover:scale-110"
+                          }
+                        `}
+                        >
+                          {sector.title}
+                        </h3>
+                        <p
+                          className={`text-white text-lg max-w-md transition-all duration-500 transform
+                          ${
+                            isMobile
+                              ? isActive
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-4"
+                              : "opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0"
+                          }
+                        `}
+                        >
+                          {sector.description}
+                        </p>
+                      </div>
+
+                      {/* Bottom Border Effect */}
+                      <div
+                        className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r 
+                          from-${sector.color.split("-")[1]}-400 to-maisvida-green transform transition-transform duration-500
+                          ${
+                            isMobile
+                              ? isActive
+                                ? "scale-x-100"
+                                : "scale-x-0"
+                              : "scale-x-0 group-hover:scale-x-100"
+                          }
+                        `}
+                      />
                     </div>
-                    
-                    {/* Bottom Border Effect */}
-                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-${sector.color.split('-')[1]}-400 to-maisvida-green transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
-                  </div>
-                </CarouselItem>
-              ))}
+                  </CarouselItem>
+                );
+              })}
             </CarouselContent>
             <CarouselPrevious className="bg-maisvida-green hover:bg-maisvida-green/80 border-maisvida-green text-white" />
             <CarouselNext className="bg-maisvida-green hover:bg-maisvida-green/80 border-maisvida-green text-white" />

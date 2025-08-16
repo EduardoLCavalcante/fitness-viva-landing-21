@@ -17,7 +17,7 @@ const Contact = () => {
   const [hours, setHours] = useState<Record<string, BusinessHour[]>>({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // Coordenadas para MAIS VIDA Studio de Musculação em Russas, Ceará, Brasil
+  // Coordenadas para MAIS VIDA Studio de Treinamento em Russas, Ceará, Brasil
   const gymLocation: [number, number] = [-5.1538788, -38.0926763];
 
   useEffect(() => {
@@ -62,7 +62,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
     toast({
       title: "Mensagem enviada!",
       description: "Entraremos em contato em breve.",

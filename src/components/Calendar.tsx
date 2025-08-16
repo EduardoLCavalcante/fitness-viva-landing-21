@@ -27,7 +27,6 @@ const CalendarSectionComponent = () => {
         throw error;
       }
       
-      console.log('Special dates fetched:', data);
       return data as SpecialDate[];
     }
   });
@@ -55,8 +54,7 @@ const CalendarSectionComponent = () => {
     if (!eventosEspeciais) return [];
     
     const mesAtual = getCurrentMonthString();
-    console.log('Current month string:', mesAtual);
-    console.log('Eventos especiais:', eventosEspeciais);
+
     
     const filtered = eventosEspeciais
       .filter(evento => evento.month === mesAtual)
@@ -64,8 +62,7 @@ const CalendarSectionComponent = () => {
         // Sort by id or any other criteria if needed
         return a.id - b.id;
       });
-      
-    console.log('Filtered events:', filtered);
+
     return filtered;
   }
 
@@ -135,7 +132,6 @@ const CalendarSectionComponent = () => {
   //   );
   // }
 
-  console.log("Eventos a serem renderizados:", eventosDoMes);
 
 
   return (
