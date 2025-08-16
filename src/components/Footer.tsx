@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-maisvida-green to-maisvida-red rounded-full blur opacity-30"></div>
                 <div className="relative p-1">
                   <img 
-                    src="/lovable-uploads/231ca6bb-1042-4036-914f-09bcbe190ab6.png" 
+                    src="/lovable-uploads/53cb1129-5526-47b5-acae-8dc16b293ec6.png" 
                     alt="Mais Vida Academia" 
                     className="h-12"
                   />
