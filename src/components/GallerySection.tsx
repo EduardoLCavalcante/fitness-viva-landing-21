@@ -70,7 +70,7 @@ const GallerySection = () => {
               align: "start",
               loop: true,
             }}
-            className="w-full max-w-6xl mx-auto"
+            className="w-full max-w-screen-lg mx-auto"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {gymSectors.map((sector) => { 
@@ -125,7 +125,7 @@ const GallerySection = () => {
                           }
                         `}
                         >
-                          {sector.title}
+                          
                         </h3>
                         <p
                           className={`text-white text-lg max-w-md transition-all duration-500 transform
