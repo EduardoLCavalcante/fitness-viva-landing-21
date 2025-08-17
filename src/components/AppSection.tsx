@@ -95,7 +95,7 @@ const AppSection = () => {
                     <div className="relative w-full h-full bg-black rounded-[48px] overflow-hidden">
                       {/* Imagem preenche todo o espaço */}
                       <img
-                        src="ScaFIT-tela.jpeg"
+                        src="sca-fit-novo.jpeg"
                         alt="ScaFIT tela"
                         className="w-full h-full object-cover translate-y-[-1%]"
                       />

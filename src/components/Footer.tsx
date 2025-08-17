@@ -25,7 +25,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 mb-6 font-light">
-              Transformando vidas através poderoso e principal medicamento "exercício físico".
+              Transformando vidas através do poderoso e principal medicamento da vida, “exercício físico”.
             </p>
             <div className="flex space-x-4">
             

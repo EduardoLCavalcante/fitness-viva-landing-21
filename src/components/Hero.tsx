@@ -114,7 +114,7 @@ const Hero = () => {
                   <p className="text-white/70 text-sm">Ética e Profissionalismo</p>
                   <p className="text-white/70 text-sm">Segurança e Responsabilidade</p>
                   <p className="text-white/70 text-sm">Qualidade e Eficiência</p>
-                  <p className="text-white/70 text-sm">Organização e Busca pela Excelência</p>
+                  <p className="text-white/70 text-sm">Acolhimento e inclusão</p>
                 </div>
               </div>
             </div>
