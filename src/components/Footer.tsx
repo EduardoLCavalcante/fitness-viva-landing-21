@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="flex space-x-4">
             
               <a 
-              href="https://www.instagram.com/mais.vida_studio.de.musculacao/" 
+              href="https://www.instagram.com/mais.vida_studio.de.treina/" 
               target="_blank"
               rel="noreferrer"
               className="bg-maisvida-green/10 hover:bg-maisvida-green/20 p-2 rounded-full transition-colors border border-maisvida-green/20">

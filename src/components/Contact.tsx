@@ -127,7 +127,7 @@ const Contact = () => {
                     <h4 className="font-semibold ">Instagram</h4>
 
                     <a
-                    href="https://www.instagram.com/mais.vida_studio.de.musculacao/" 
+                    href="https://www.instagram.com/mais.vida_studio.de.treina/" 
                     target="_blank"
                     rel="noreferrer"
                     className="text-gray-200 gap-2 flex"><SquareArrowOutUpRight />Link
