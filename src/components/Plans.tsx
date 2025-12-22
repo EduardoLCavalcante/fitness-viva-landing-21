@@ -74,7 +74,7 @@ const Plans = () => {
   }
 
   return (
-    <section id="plans" className="py-20 bg-black ">
+    <section id="plans" className="py-20 bg-black hidden">
       <div className="absolute w-full h-full z-0">
         <div className="absolute top-1/4 right-[20%] w-64 h-64 bg-maisvida-green rounded-full filter blur-[120px] opacity-20 animate-pulse"></div>
         <div className="absolute bottom-1/4 left-[20%] w-72 h-72 bg-maisvida-red rounded-full filter blur-[120px] opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>

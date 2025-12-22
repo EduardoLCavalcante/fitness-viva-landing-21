@@ -53,7 +53,7 @@ const AppSection = () => {
             
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <a 
-                href="https://apps.apple.com/br/app/sca-fit/id1555516617?platform=iphone" 
+                href="https://apps.apple.com/br/app/sca-aluno/id1630928165" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
@@ -63,7 +63,7 @@ const AppSection = () => {
                 </Button>
               </a>
               <a 
-                href="https://play.google.com/store/apps/details?id=com.sistemasca.scafit&pcampaignid=web_share" 
+                href="https://play.google.com/store/apps/details?id=com.sistemasca.scaaluno" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
@@ -95,7 +95,7 @@ const AppSection = () => {
                     <div className="relative w-full h-full bg-black rounded-[48px] overflow-hidden">
                       {/* Imagem preenche todo o espaço */}
                       <img
-                        src="sca-fit-novo.jpeg"
+                        src="unnamed.webp"
                         alt="ScaFIT tela"
                         className="w-full h-full object-cover translate-y-[-1%]"
                       />
