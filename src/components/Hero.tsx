@@ -58,8 +58,17 @@ const Hero = () => {
             </h1>
             
             <p className="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-lg font-light">
-                Faça parte da familia +V e viva ótimas experiências no seu dia. Um ambiente inclusivo de acolhedor com equipamentos novos de biomecânica
-                excelente, profissionais qualificados e capacitados para ajudar a você nesse objetivo
+            Na Mais Vida, o treino começa com o que realmente importa: avaliação física completa para garantir segurança, precisão e cuidado em cada prescrição. Para nós, acompanhar e orientar profissionalmente é a base de tudo — você não é só um aluno, é uma pessoa em evolução, acompanhada de perto por quem entende do corpo, da saúde e do movimento.
+            <br />
+            <br />
+            Aqui, o treinamento é prescrito de forma personalizada, monitorado e integrado ao app do aluno, onde você acompanha sua rotina, progresso e orientações na palma da mão. Nosso espaço foi criado para toda a família: da criança ao idoso, do iniciante ao praticante avançado, todos encontram um ambiente inclusivo, acolhedor e humanizado.
+            <br />
+            <br />
+            Porque, no final, não é sobre máquinas… é sobre conexão.
+            Acreditamos em vínculo, presença e propósito. Não controlamos por catraca, mas por resultados reais, conquistados com ciência, acompanhamento e dedicação.
+            <br />
+            <br />
+            A Mais Vida existe para transformar o seu dia com movimento, boas experiências e mais qualidade de vida — um lugar onde você treina, evolui e se sente bem.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
