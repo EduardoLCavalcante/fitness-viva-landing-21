@@ -1,7 +1,17 @@
 
-import { HeartPulse, Dumbbell, Users, Award, Clock, Calendar } from "lucide-react";
+import { HeartPulse, Dumbbell, Users, Award, Clock, Calendar, CircleAlert, ExternalLink, Smartphone } from "lucide-react";
 
 const About = () => {
+
+   const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: "smooth",
+      })
+    }
+  }
   return (
     <section id="about" className="py-20 bg-black text-white">
         {/* Dynamic elements */}
@@ -72,38 +82,86 @@ const About = () => {
             <span className="text-maisvida-green"> NOVIDADES</span> 
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-12">
             {/* Novas Turmas */}
             <div className="bg-maisvida-dark rounded-lg overflow-hidden animate-on-scroll shadow-lg border border-maisvida-green/20">
               <div className="p-6 bg-gradient-to-r from-maisvida-green/20 to-transparent">
                 <h4 className="text-2xl font-bold flex items-center gap-2">
-                  <Calendar className="h-6 w-6 text-maisvida-green" />
-                  Novas Turmas
+                  <CircleAlert className="h-6 w-6 text-maisvida-green" />
+                  
                 </h4>
               </div>
               
               <div className="p-6 space-y-4">
-             
-                
-                <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
-                  <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
-                    <Clock className="h-6 w-6 text-maisvida-green" />
-                  </div>
-                  <div>
-                    <h5 className="font-semibold text-lg text-maisvida-green">NOVO HORÁRIO</h5>
-                    <p className="text-gray-400 mt-1">Sábado 06:00 ás 10:00</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">Sáb</span>
-                      <span className="bg-maisvida-green/20 text-maisvida-green text-xs px-2 py-1 rounded">6h - 10h</span>
+                {/* Exibe cada novidade como um cartão responsivo em grade */}
+                <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-4">
+
+                  <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
+                    <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
+                      <Smartphone className="h-6 w-6 text-maisvida-green" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-lg text-maisvida-green">Novo sistema</h5>
+                      <p className="text-gray-400 mt-1">
+                        <a className="cursor-pointer flex hover:underline" onClick={() => scrollToSection("app")}>
+                          ScaFIT Aluno 
+                          <ExternalLink className="text-gray-400 pl-1"/>
+                          </a>
+                      </p>
+                      
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
+                    <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
+                      <Award className="h-6 w-6 text-maisvida-green" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-lg text-maisvida-green">Novos planos</h5>
+                      <p className="text-gray-400 mt-1">Confira novos pacotes e condições.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
+                    <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
+                      <Dumbbell className="h-6 w-6 text-maisvida-green" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-lg text-maisvida-green">Novos equipamentos</h5>
+                      <p className="text-gray-400 mt-1">Equipamentos modernos para melhores resultados.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
+                    <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
+                      <Calendar className="h-6 w-6 text-maisvida-green" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-lg text-maisvida-green">Novas aulas</h5>
+                      <p className="text-gray-400 mt-1">Aulas com novas modalidades e horários.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 bg-black/30 rounded-lg">
+                    <div className="w-12 h-12 rounded-full bg-maisvida-green/20 flex items-center justify-center flex-shrink-0">
+                      <CircleAlert className="h-6 w-6 text-maisvida-green" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-lg text-maisvida-green">Novos eventos</h5>
+                      <p className="text-gray-400 mt-1">Fique por dentro dos próximos eventos.</p>
+                    </div>
+                  </div>
+
                 </div>
-                
-                
               </div>
             </div>
             
-            {/* Novos Equipamentos */}
+            {/* Novos Equipamentos (desativado temporariamente) */}
+            {/*
+              Desativado usando uma checagem falsa para manter o JSX no código sem renderizar.
+              Para reativar, remova '{false && (' antes do bloco e ')}' após o bloco.
+            */}
+            {false && (
             <div className="bg-maisvida-dark rounded-lg overflow-hidden animate-on-scroll shadow-lg border border-maisvida-green/20">
               <div className="p-6 bg-gradient-to-r from-maisvida-green/20 to-transparent">
                 <h4 className="text-2xl font-bold flex items-center gap-2">
